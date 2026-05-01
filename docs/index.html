@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OccSim: Multi-kilometer Simulation</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://www.youtube.com/iframe_api"></script>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <nav class="glass-nav">
+        <div class="nav-slider" id="nav-slider"></div>
+        <a href="#main-demo" class="nav-link active" data-index="0">Main Demo</a>
+        <a href="#rollout" class="nav-link" data-index="1">Rollout with W-DiT</a>
+        <a href="#diversity" class="nav-link" data-index="2">Diversity & Experiments</a>
+    </nav>
+
+    <!-- 滚动容器 -->
+    <div class="scroll-container">
+        <!-- 第一页：Main Demo -->
+        <section id="main-demo" class="page-section">
+            <div class="hero-content">
+                <h1 class="title">OccSim: Multi-kilometer simulation <br> with long-horizon occupancy world models</h1>
+                <p class="authors">
+                    <a href="https://scholar.google.com/citations?user=9jkxtlYAAAAJ&hl=en" target="_blank" class="author-link">Tianran Liu</a>,
+                    <a href="https://www.linkedin.com/in/jamesislit2005/" target="_blank" class="author-link">Shengwen Zhao</a>,
+                    <a href="https://scholar.google.com/citations?user=crjO2y8AAAAJ&hl=en" target="_blank" class="author-link">Mozhgan Pourkeshavarz</a>,
+                    <a href="https://www.linkedin.com/in/weican-li/" target="_blank" class="author-link">Weican Li</a>,
+                    <a href="https://leaf.utias.utoronto.ca/author/nicholas-rhinehart/" target="_blank" class="author-link">Nicholas Rhinehart</a>
+                </p>
+                <p class="affiliation">Learning, Embodied Autonomy, and Forecasting (LEAF) Lab, University of Toronto</p>
+
+                <div class="button-group">
+    <!-- 1. 修改了这里的 href，填入了真实的 arXiv 链接 -->
+    <a href="https://arxiv.org/abs/2603.28887" target="_blank" class="action-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        Arxiv
+    </a>
+    <!-- 2. 修改了这里的 href 填入 GitHub 链接，并去掉了 (coming soon) -->
+    <a href="https://github.com/Orbis36/OccSim" target="_blank" class="action-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="btn-icon">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+        Code
+    </a>
+</div>
+            </div>
+
+            <div class="showcase-container">
+                <!-- 视频容器 -->
+                <div class="video-wrapper">
+                    <iframe
+                        id="hero-video"
+                        src="https://www.youtube.com/embed/ENxERMeD-a4?autoplay=1&mute=1&loop=1&playlist=ENxERMeD-a4&controls=0&rel=0&enablejsapi=1"
+                        title="OccSim Main Demo"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                    <div class="video-overlay"></div>
+                    <div class="custom-controls">
+                        <button id="play-pause-btn" class="control-btn">
+                            <svg id="pause-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                            <svg id="play-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path d="M8 5v14l11-7z"/></svg>
+                        </button>
+                        <div class="progress-container" id="progress-container">
+                            <div class="progress-bar" id="progress-bar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 玻璃卡片容器 -->
+                <div class="feature-cards" id="feature-cards">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>World Model Driven Simulator</h3>
+                            <p>As far as we know, OccSim is the first occupancy world model driven simulation via autoregressive rollouts.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>HD-Map free Generation</h3>
+                            <p>By eliminating the reliance on labeled HD maps during simulation, OccSim enables scalable AD simulation.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>SoTA Generation Length & Quality</h3>
+                            <p>W-DiT enables at least 80x longer static semantic occupancy generation with SoTA fidelity and diversity.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>Towards next Generation Sim.</h3>
+                            <p>Data collected from OccSim enable 22.1% improvement on 0-shot dynamic prior learning over asset-based Sim.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第二页：Rollout with W-DiT -->
+        <section id="rollout" class="page-section">
+            <div class="placeholder-content">
+                <h2>Rollout with W-DiT</h2>
+            </div>
+        </section>
+
+        <!-- 第三页：Diversity & Experiments -->
+        <section id="diversity" class="page-section">
+            <div class="placeholder-content">
+                <h2>Diversity & Experiments</h2>
+            </div>
+        </section>
+    </div>
+
+    <!-- 右侧悬浮玻璃翻页按钮组 (必须在 scroll-container 外) -->
+    <!-- 向上翻页按钮 -->
+    <button id="prev-page-btn" class="glass-floating-btn up-btn" aria-label="Previous Page" style="opacity: 0; pointer-events: none; transform: translateY(-50%) scale(0.8);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
+    <!-- 向下翻页按钮 -->
+    <button id="next-page-btn" class="glass-floating-btn down-btn" aria-label="Next Page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

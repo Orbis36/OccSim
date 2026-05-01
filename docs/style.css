@@ -1,0 +1,524 @@
+:root {
+    /* 极度纯净的偏冷白色背景底色 */
+    --bg-color: #f2f4f8;
+    --text-main: #1d1d1f;
+    --text-muted: #515154;
+    --btn-bg: #ffffff;
+    --btn-hover: #e5e5ea;
+    --font-title: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    overflow: hidden;
+    position: relative;
+}
+
+/* ==========================================
+   高级弥散光极光背景 (Aurora Background)
+   ========================================== */
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    width: 70vw;
+    height: 70vw;
+    border-radius: 50%;
+    filter: blur(120px);
+    -webkit-filter: blur(120px);
+    z-index: -1;
+    opacity: 0.6;
+    pointer-events: none;
+    animation: aurora 12s infinite ease-in-out alternate;
+}
+
+/* 高明度、高饱和的亮青蓝色 */
+body::before {
+    background: radial-gradient(circle, rgba(45, 185, 255, 0.6) 0%, rgba(255, 255, 255, 0) 70%);
+    top: -15vw;
+    left: -10vw;
+}
+
+
+body::after {
+    background: radial-gradient(circle, rgba(0, 175, 0, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+    bottom: -15vw;
+    right: -10vw;
+    animation-delay: -5s;
+}
+
+@keyframes aurora {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(15vw, 20vw) scale(1.3); }
+    100% { transform: translate(-20vw, 10vw) scale(0.8); }
+}
+
+/* ==========================================
+   滚动容器与基础布局
+   ========================================== */
+.scroll-container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+.page-section {
+    height: 100vh;
+    width: 100vw;
+    scroll-snap-align: start;
+    position: relative;
+    padding: 0 5%;
+    display: flex;
+    flex-direction: column;
+}
+
+#main-demo {
+    justify-content: flex-start;
+    padding-top: 12vh; /* 整体下移，平衡留白 */
+}
+
+/* ==========================================
+   导航栏与果冻动画
+   ========================================== */
+.glass-nav {
+    position: fixed;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 40px;
+    padding: 6px;
+    z-index: 1000;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+    white-space: nowrap;
+    max-width: 95vw;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.glass-nav::-webkit-scrollbar { display: none; }
+
+.nav-link {
+    position: relative;
+    text-decoration: none;
+    color: var(--text-muted);
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 30px;
+    z-index: 2;
+    transition: color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.nav-link.active { color: var(--text-main); }
+
+.nav-slider {
+    position: absolute;
+    top: 6px; left: 6px;
+    height: calc(100% - 12px);
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 30px;
+    z-index: 1;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* ==========================================
+   文字排版与按钮
+   ========================================== */
+.hero-content {
+    max-width: 100%;
+    margin-bottom: 3vh;
+}
+
+.title {
+    font-family: var(--font-title);
+    font-size: 3rem;
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.2rem;
+    color: #111;
+}
+
+.authors {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.affiliation {
+    font-size: 0.85rem;
+    color: #888;
+    line-height: 1.5;
+}
+
+.button-group {
+    display: flex;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 20px;
+    background-color: var(--btn-bg);
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 50px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.action-btn:hover { background-color: var(--btn-hover); }
+.action-btn:active { transform: scale(0.98); }
+.btn-icon { width: 18px; height: 18px; margin-right: 8px; }
+
+/* ==========================================
+   视频容器区域
+   ========================================== */
+.showcase-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+.video-wrapper {
+    width: 100%;
+    max-width: calc(45vh * 16 / 9);
+    aspect-ratio: 16 / 9;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.15);
+    position: relative;
+    flex-shrink: 0;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    border: none; pointer-events: none;
+    transform: scale(1); /* 轻微放大裁掉边缘 */
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 5;
+}
+
+.custom-controls {
+    position: absolute;
+    bottom: 30px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; align-items: center;
+    background: rgba(40, 40, 40, 0.6);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 30px; padding: 10px 20px;
+    width: 80%; max-width: 600px;
+    opacity: 0; transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+.video-wrapper:hover .custom-controls { opacity: 1; }
+
+.control-btn {
+    background: none; border: none; color: white;
+    cursor: pointer; width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    margin-right: 16px; transition: transform 0.1s ease;
+}
+
+.control-btn:hover { transform: scale(1.1); }
+.control-btn svg { width: 20px; height: 20px; }
+
+.progress-container {
+    flex-grow: 1; height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px; cursor: pointer;
+    position: relative; overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%; width: 0%; background: #fff;
+    border-radius: 3px; pointer-events: none;
+}
+
+/* ==========================================
+   多彩折射毛玻璃卡片 (Glassmorphism Bento)
+   ========================================== */
+.feature-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    max-width: calc(45vh * 16 / 9);
+    margin: 0 auto;
+}
+
+.card {
+    /* 微微的白底承接颜色 */
+    background: rgba(255, 255, 255, 0.6);
+
+    /* 核心魔法：强烈模糊 + 提高饱和度，产生“聚色”折射感 */
+    backdrop-filter: blur(50px) saturate(150%);
+    -webkit-backdrop-filter: blur(30px) saturate(150%);
+
+    /* 物理切割光边 */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-top: 1px solid rgba(255, 255, 255, 0.9);
+    border-left: 1px solid rgba(255, 255, 255, 0.9);
+
+    /* 内部体积感雕刻 */
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.08),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+        inset 0 0 20px rgba(255, 255, 255, 0.5);
+
+    border-radius: 12px;
+    padding: 12px 6px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow:
+        0 12px 48px rgba(0, 0, 0, 0.12),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.4),
+        inset 0 0 30px rgba(255, 255, 255, 0.8);
+}
+
+/* 内部跟随鼠标的柔和漫反射光源 */
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(
+        800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(255, 255, 255, 0.15),
+        transparent 40%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.card:hover::before { opacity: 1; }
+
+.card h3, .card p, .card .card-content { position: relative; z-index: 2; }
+
+/* 窄屏状态：隐藏正文，只保留胶囊形态标题 */
+.card p { display: none; }
+.card h3 {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 0;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+}
+
+/* ==========================================
+   右侧悬浮双向翻页按钮 (Bespalov Glass)
+   ========================================== */
+.glass-floating-btn {
+    position: fixed;
+    right: 3vw;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.8);
+    border-left: 1px solid rgba(255, 255, 255, 0.8);
+
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+
+    display: flex; justify-content: center; align-items: center;
+    color: #111; cursor: pointer; z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.up-btn { top: calc(20% - 35px); }
+.down-btn { top: calc(20% + 35px); }
+
+.glass-floating-btn svg {
+    width: 24px; height: 24px; transition: transform 0.3s ease;
+}
+
+.glass-floating-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.9);
+    box-shadow:
+        0 12px 48px rgba(0, 0, 0, 0.15),
+        inset 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+.up-btn:hover { transform: translateY(-4px) scale(1.1) !important; }
+.up-btn:hover svg { transform: translateY(-3px); }
+
+.down-btn:hover { transform: translateY(4px) scale(1.1) !important; }
+.down-btn:hover svg { transform: translateY(3px); }
+
+
+/* ==========================================
+   响应式布局 (全屏大视窗逻辑)
+   ========================================== */
+@media (min-width: 1024px) {
+    .showcase-container {
+        flex-direction: row; /* 强制左右并排 */
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        max-width: 1400px;
+    }
+
+    .video-wrapper {
+        flex: 0 0 auto;
+        height: 55vh;
+        width: calc(55vh * 16 / 9);
+        max-width: 65vw;
+        max-height: calc(65vw * 9 / 16);
+    }
+
+    .feature-cards {
+        display: grid; /* 恢复田字格 */
+        grid-template-columns: repeat(2, 1fr);
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 440px;
+        gap: 20px;
+    }
+
+    /* 1. 卡片主容器：恢复顶部对齐 */
+    .card {
+        aspect-ratio: 1 / 1;
+        padding: 12% 10% 10% 10%; /* 顶部留白稍多，更有呼吸感 */
+        justify-content: flex-start; /* 标题置顶 */
+        align-items: flex-start;
+        text-align: left;
+        border-radius: 20px;
+    }
+
+    /* 2. 标题：清脆、精炼 */
+    .card h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #111;
+        letter-spacing: -0.02em;
+        margin-bottom: 15px; /* 为下方的细线留出位置 */
+        line-height: 1.2;
+        width: 100%;
+        position: relative;
+    }
+
+    /* 3. 【核心美化】：增加一条具有水晶质感的细分割线 */
+    .card h3::after {
+        content: "";
+        position: absolute;
+        bottom: -15px; /* 处于 margin-bottom 的中间 */
+        left: 0;
+        width: 40px; /* 初始宽度较短，更精致 */
+        height: 1px;
+        /* 渐变线：从亮白过渡到透明 */
+        background: rgba(0, 0, 0, 0.1);
+        transition: width 0.4s ease; /* 增加一个悬浮时线条变长的动效 */
+    }
+
+    .card:hover h3::after {
+        width: 100%; /* 鼠标移上去时，线条优雅地拉长 */
+    }
+
+    /* 4. 正文描述：紧凑且专业 */
+    .card p {
+        display: block;
+        margin-top: 25px; /* 距离分割线的距离 */
+        font-size: 0.84rem;
+        font-weight: 400;
+        color: #515154;
+        line-height: 1.3; /* 稍微调小行距，显得更有学术论文的严谨感 */
+        letter-spacing: 0.01em;
+        opacity: 0.85;
+    }
+}
+
+/* 宽而矮的屏幕保护 */
+@media (max-height: 700px) and (min-width: 1024px) {
+    #main-demo { padding-top: 8vh; }
+    .video-wrapper {
+        height: 52vh;
+        width: calc(52vh * 16 / 9);
+    }
+}
+
+/* 作者链接基础样式 */
+.author-link {
+    color: var(--text-muted); /* 初始使用你定义的辅助文本颜色[cite: 6] */
+    text-decoration: none;    /* 去掉丑陋的默认下划线 */
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+/* 鼠标悬浮动效：变深并出现极细的下划线 */
+.author-link:hover {
+    color: var(--text-main); /* 悬浮时变黑[cite: 6] */
+}
+
+/* 可选：增加一个优雅的下划线动效 */
+.author-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--text-main);
+    transition: width 0.3s ease;
+}
+
+.author-link:hover::after {
+    width: 100%;
+}
+
+/* 占位页面底色，测试翻页效果用 */
+.placeholder-content { display: flex; justify-content: center; align-items: center; height: 100%; font-size: 2rem; color: #aaa; }
+#rollout { background-color: rgba(255, 255, 255, 0.2); backdrop-filter: blur(20px); }
+#diversity { background-color: rgba(255, 255, 255, 0.4); backdrop-filter: blur(20px); }
