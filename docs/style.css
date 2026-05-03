@@ -37,13 +37,11 @@ body::after {
     animation: aurora 12s infinite ease-in-out alternate;
 }
 
-/* 高明度、高饱和的亮青蓝色 */
 body::before {
     background: radial-gradient(circle, rgba(45, 185, 255, 0.6) 0%, rgba(255, 255, 255, 0) 70%);
     top: -15vw;
     left: -10vw;
 }
-
 
 body::after {
     background: radial-gradient(circle, rgba(0, 175, 0, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
@@ -73,14 +71,21 @@ body::after {
     width: 100vw;
     scroll-snap-align: start;
     position: relative;
-    padding: 0 5%;
+    padding: 12vh 5% 0;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+}
+
+.section-content {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 #main-demo {
     justify-content: flex-start;
-    padding-top: 12vh; /* 整体下移，平衡留白 */
+    padding-top: 12vh;
 }
 
 /* ==========================================
@@ -217,7 +222,7 @@ body::after {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     border: none; pointer-events: none;
-    transform: scale(1); /* 轻微放大裁掉边缘 */
+    transform: scale(1);
 }
 
 .video-overlay {
@@ -278,24 +283,13 @@ body::after {
 }
 
 .card {
-    /* 微微的白底承接颜色 */
     background: rgba(255, 255, 255, 0.6);
-
-    /* 核心魔法：强烈模糊 + 提高饱和度，产生“聚色”折射感 */
     backdrop-filter: blur(50px) saturate(150%);
     -webkit-backdrop-filter: blur(30px) saturate(150%);
-
-    /* 物理切割光边 */
     border: 1px solid rgba(255, 255, 255, 0.4);
     border-top: 1px solid rgba(255, 255, 255, 0.9);
     border-left: 1px solid rgba(255, 255, 255, 0.9);
-
-    /* 内部体积感雕刻 */
-    box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.08),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.2),
-        inset 0 0 20px rgba(255, 255, 255, 0.5);
-
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.5);
     border-radius: 12px;
     padding: 12px 6px;
     text-align: center;
@@ -312,22 +306,14 @@ body::after {
 .card:hover {
     transform: translateY(-4px);
     border-color: rgba(255, 255, 255, 0.8);
-    box-shadow:
-        0 12px 48px rgba(0, 0, 0, 0.12),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.4),
-        inset 0 0 30px rgba(255, 255, 255, 0.8);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.4), inset 0 0 30px rgba(255, 255, 255, 0.8);
 }
 
-/* 内部跟随鼠标的柔和漫反射光源 */
 .card::before {
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(
-        800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-        rgba(255, 255, 255, 0.15),
-        transparent 40%
-    );
+    background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.15), transparent 40%);
     opacity: 0;
     transition: opacity 0.4s ease;
     pointer-events: none;
@@ -335,10 +321,7 @@ body::after {
 }
 
 .card:hover::before { opacity: 1; }
-
 .card h3, .card p, .card .card-content { position: relative; z-index: 2; }
-
-/* 窄屏状态：隐藏正文，只保留胶囊形态标题 */
 .card p { display: none; }
 .card h3 {
     font-family: var(--font-body);
@@ -351,7 +334,7 @@ body::after {
 }
 
 /* ==========================================
-   右侧悬浮双向翻页按钮 (Bespalov Glass)
+   右侧悬浮双向翻页按钮
    ========================================== */
 .glass-floating-btn {
     position: fixed;
@@ -359,19 +342,13 @@ body::after {
     width: 56px;
     height: 56px;
     border-radius: 50%;
-
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(24px) saturate(150%);
     -webkit-backdrop-filter: blur(24px) saturate(150%);
-
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-top: 1px solid rgba(255, 255, 255, 0.8);
     border-left: 1px solid rgba(255, 255, 255, 0.8);
-
-    box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.1),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
     display: flex; justify-content: center; align-items: center;
     color: #111; cursor: pointer; z-index: 1000;
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -380,145 +357,290 @@ body::after {
 .up-btn { top: calc(20% - 35px); }
 .down-btn { top: calc(20% + 35px); }
 
-.glass-floating-btn svg {
-    width: 24px; height: 24px; transition: transform 0.3s ease;
-}
+.glass-floating-btn svg { width: 24px; height: 24px; transition: transform 0.3s ease; }
 
 .glass-floating-btn:hover {
     background: rgba(255, 255, 255, 0.25);
     border-color: rgba(255, 255, 255, 0.9);
-    box-shadow:
-        0 12px 48px rgba(0, 0, 0, 0.15),
-        inset 0 0 20px rgba(255, 255, 255, 0.6);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.6);
 }
 
 .up-btn:hover { transform: translateY(-4px) scale(1.1) !important; }
 .up-btn:hover svg { transform: translateY(-3px); }
-
 .down-btn:hover { transform: translateY(4px) scale(1.1) !important; }
 .down-btn:hover svg { transform: translateY(3px); }
-
 
 /* ==========================================
    响应式布局 (全屏大视窗逻辑)
    ========================================== */
 @media (min-width: 1024px) {
-    .showcase-container {
-        flex-direction: row; /* 强制左右并排 */
-        justify-content: center;
-        align-items: center;
-        gap: 40px;
-        max-width: 1400px;
-    }
-
-    .video-wrapper {
-        flex: 0 0 auto;
-        height: 55vh;
-        width: calc(55vh * 16 / 9);
-        max-width: 65vw;
-        max-height: calc(65vw * 9 / 16);
-    }
-
-    .feature-cards {
-        display: grid; /* 恢复田字格 */
-        grid-template-columns: repeat(2, 1fr);
-        flex: 0 0 auto;
-        width: 100%;
-        max-width: 440px;
-        gap: 20px;
-    }
-
-    /* 1. 卡片主容器：恢复顶部对齐 */
-    .card {
-        aspect-ratio: 1 / 1;
-        padding: 12% 10% 10% 10%; /* 顶部留白稍多，更有呼吸感 */
-        justify-content: flex-start; /* 标题置顶 */
-        align-items: flex-start;
-        text-align: left;
-        border-radius: 20px;
-    }
-
-    /* 2. 标题：清脆、精炼 */
-    .card h3 {
-        font-size: 1.25rem;
-        font-weight: 600;
-        color: #111;
-        letter-spacing: -0.02em;
-        margin-bottom: 15px; /* 为下方的细线留出位置 */
-        line-height: 1.2;
-        width: 100%;
-        position: relative;
-    }
-
-    /* 3. 【核心美化】：增加一条具有水晶质感的细分割线 */
-    .card h3::after {
-        content: "";
-        position: absolute;
-        bottom: -15px; /* 处于 margin-bottom 的中间 */
-        left: 0;
-        width: 40px; /* 初始宽度较短，更精致 */
-        height: 1px;
-        /* 渐变线：从亮白过渡到透明 */
-        background: rgba(0, 0, 0, 0.1);
-        transition: width 0.4s ease; /* 增加一个悬浮时线条变长的动效 */
-    }
-
-    .card:hover h3::after {
-        width: 100%; /* 鼠标移上去时，线条优雅地拉长 */
-    }
-
-    /* 4. 正文描述：紧凑且专业 */
-    .card p {
-        display: block;
-        margin-top: 25px; /* 距离分割线的距离 */
-        font-size: 0.84rem;
-        font-weight: 400;
-        color: #515154;
-        line-height: 1.3; /* 稍微调小行距，显得更有学术论文的严谨感 */
-        letter-spacing: 0.01em;
-        opacity: 0.85;
-    }
+    .showcase-container { flex-direction: row; justify-content: center; align-items: center; gap: 40px; max-width: 1400px; }
+    .video-wrapper { flex: 0 0 auto; height: 55vh; width: calc(55vh * 16 / 9); max-width: 65vw; max-height: calc(65vw * 9 / 16); }
+    .feature-cards { display: grid; grid-template-columns: repeat(2, 1fr); flex: 0 0 auto; width: 100%; max-width: 440px; gap: 20px; }
+    .card { aspect-ratio: 1 / 1; padding: 12% 10% 10% 10%; justify-content: flex-start; align-items: flex-start; text-align: left; border-radius: 20px; }
+    .card h3 { font-size: 1.25rem; font-weight: 600; color: #111; letter-spacing: -0.02em; margin-bottom: 15px; line-height: 1.2; width: 100%; position: relative; }
+    .card h3::after { content: ""; position: absolute; bottom: -15px; left: 0; width: 40px; height: 1px; background: rgba(0, 0, 0, 0.1); transition: width 0.4s ease; }
+    .card:hover h3::after { width: 100%; }
+    .card p { display: block; margin-top: 25px; font-size: 0.84rem; font-weight: 400; color: #515154; line-height: 1.3; letter-spacing: 0.01em; opacity: 0.85; }
 }
 
-/* 宽而矮的屏幕保护 */
 @media (max-height: 700px) and (min-width: 1024px) {
     #main-demo { padding-top: 8vh; }
-    .video-wrapper {
-        height: 52vh;
-        width: calc(52vh * 16 / 9);
-    }
+    .video-wrapper { height: 52vh; width: calc(52vh * 16 / 9); }
 }
 
-/* 作者链接基础样式 */
-.author-link {
-    color: var(--text-muted); /* 初始使用你定义的辅助文本颜色[cite: 6] */
-    text-decoration: none;    /* 去掉丑陋的默认下划线 */
-    transition: color 0.3s ease;
-    position: relative;
-}
+.author-link { color: var(--text-muted); text-decoration: none; transition: color 0.3s ease; position: relative; }
+.author-link:hover { color: var(--text-main); }
+.author-link::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -2px; left: 0; background-color: var(--text-main); transition: width 0.3s ease; }
+.author-link:hover::after { width: 100%; }
 
-/* 鼠标悬浮动效：变深并出现极细的下划线 */
-.author-link:hover {
-    color: var(--text-main); /* 悬浮时变黑[cite: 6] */
-}
+.nav-logo { position: fixed; top: 32px; left: 5vw; font-family: var(--font-title); font-weight: 500; font-size: 1.8rem; letter-spacing: -0.01em; color: #111; z-index: 1001; opacity: 0; transform: translateX(-20px); transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); pointer-events: none; }
+.nav-logo.visible { opacity: 1; transform: translateX(0); pointer-events: auto; }
 
-/* 可选：增加一个优雅的下划线动效 */
-.author-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 1px;
-    bottom: -2px;
-    left: 0;
-    background-color: var(--text-main);
-    transition: width 0.3s ease;
-}
-
-.author-link:hover::after {
-    width: 100%;
-}
-
-/* 占位页面底色，测试翻页效果用 */
 .placeholder-content { display: flex; justify-content: center; align-items: center; height: 100%; font-size: 2rem; color: #aaa; }
 #rollout { background-color: rgba(255, 255, 255, 0.2); backdrop-filter: blur(20px); }
 #diversity { background-color: rgba(255, 255, 255, 0.4); backdrop-filter: blur(20px); }
+
+/* ==========================================
+   Apple Style Performance Bars (Second Page)
+   ========================================== */
+.performance-container { display: flex; flex-direction: row; gap: 2vw; margin-top: 5vh; width: 100%; }
+.perf-block { flex: 1; display: flex; flex-direction: column; gap: 5px; background: rgba(255, 255, 255, 0.35); backdrop-filter: blur(40px) saturate(150%); -webkit-backdrop-filter: blur(40px) saturate(150%); border: 1px solid rgba(255, 255, 255, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.9); border-left: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06), inset 0 0 20px rgba(255, 255, 255, 0.3); border-radius: 28px; padding: 24px 40px; }
+.perf-title { font-family: var(--font-body); font-size: 1.1rem; font-weight: 600; color: var(--text-main); margin-bottom: -10px; }
+.apple-perf-item { display: flex; flex-direction: column; gap: 6px; }
+.apple-bar-row { display: flex; align-items: center; gap: 20px; }
+.apple-bar-track { flex-grow: 1; height: 8px; background-color: transparent; border-radius: 5px; }
+.apple-bar { height: 100%; border-radius: 5px; width: 0; transition: width 2.5s cubic-bezier(0.25, 1, 0.25, 1); }
+.apple-bar.gradient-bar { background: linear-gradient(90deg, #f5a1ff 0%, #a453ff 50%, #5265ff 100%); }
+.apple-bar.gray-bar { background-color: #86868b; }
+.apple-value { font-family: var(--font-body); font-size: 2.2rem; font-weight: 500; line-height: 1; min-width: 90px; text-align: right; letter-spacing: -0.02em; }
+.apple-value.highlight { color: #8e44ff; }
+.apple-value.text-muted { color: #86868b; }
+.apple-label { font-family: var(--font-body); font-size: 1rem; color: var(--text-main); }
+
+@media (max-width: 1024px) { .performance-container { flex-direction: column; gap: 50px; } }
+
+.section-subtitle { font-family: var(--font-title); font-size: 1.2rem; color: var(--text-muted); opacity: 0.85; line-height: 1.3; letter-spacing: 0.01em; margin-top: 50px; margin-bottom: -20px; animation: fadeInSubtitle 1s ease-out forwards; }
+.video-subtitle {
+    /* 恢复靠左对齐，去除了居中相关的限制 */
+    text-align: left;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+
+    /* 字体大小保持稍微大一点点即可 */
+    font-size: 1.2rem;
+    line-height: 1.4;
+
+    /* 【核心】：大幅压缩上下间距，把丢掉的空间抢回来 */
+    margin-top: 4vh;      /* 距离上方性能对比框稍微拉开一点 */
+    margin-bottom: 2vh;   /* 距离下方视频的距离 */
+}
+
+@keyframes fadeInSubtitle {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 0.85; transform: translateY(0); }
+}
+
+/* ==========================================
+   Video Thumbnail Gallery (Second Page)
+   ========================================== */
+.video-gallery-container { display: flex; flex-direction: row; gap: 24px; margin-top: 4vh; width: 100%; justify-content: center; }
+.video-thumbnail-card { flex: 1; aspect-ratio: 16 / 9; border-radius: 20px; overflow: hidden; position: relative; cursor: pointer; border: 4px solid rgba(255, 255, 255, 0.6); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.8); transition: transform 0.4s cubic-bezier(0.25, 1, 0.25, 1), box-shadow 0.4s ease, border-color 0.4s ease; }
+.thumbnail-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; filter: brightness(0.8) blur(2px); transition: filter 0.4s ease, transform 0.8s ease; }
+.play-button-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(1); width: 60px; height: 60px; border-radius: 50%; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(12px) saturate(150%); -webkit-backdrop-filter: blur(12px) saturate(150%); border: 1px solid rgba(255, 255, 255, 0.5); display: flex; justify-content: center; align-items: center; color: white; transition: all 0.4s cubic-bezier(0.25, 1, 0.25, 1); z-index: 2; }
+.play-button-overlay svg { width: 28px; height: 28px; margin-left: 4px; }
+.thumbnail-label { position: absolute; bottom: 12px; left: 16px; color: white; font-family: var(--font-body); font-size: 0.9rem; font-weight: 500; text-shadow: 0 2px 4px rgba(0,0,0,0.5); z-index: 2; opacity: 0.9; }
+
+.video-thumbnail-card:hover { transform: translateY(-6px); border-color: rgba(255, 255, 255, 0.9); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 1); }
+.video-thumbnail-card:hover .thumbnail-bg { filter: brightness(0.9) blur(0px); transform: scale(1.05); }
+.video-thumbnail-card:hover .play-button-overlay { background: rgba(255, 255, 255, 0.4); transform: translate(-50%, -50%) scale(1.1); }
+
+@media (max-width: 768px) { .video-gallery-container { flex-direction: column; gap: 20px; } }
+
+/* ==========================================
+   Video Modal (毛玻璃弹窗) 与 交互劫持
+   ========================================== */
+.video-modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 9000; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.4s cubic-bezier(0.25, 1, 0.25, 1); }
+.video-modal-overlay.active { opacity: 1; pointer-events: auto; }
+
+.video-modal-content { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(40px) saturate(150%); -webkit-backdrop-filter: blur(40px) saturate(150%); border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 32px; padding: 40px 50px; width: 120vw; max-width: 2500px; box-shadow: 0 40px 100px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.5); transform: scale(0.95) translateY(20px); transition: transform 0.5s cubic-bezier(0.25, 1, 0.25, 1); }
+.video-modal-overlay.active .video-modal-content { transform: scale(1) translateY(0); }
+
+.modal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; }
+.modal-title { font-family: var(--font-title); font-size: 2rem; font-weight: 500; color: var(--text-main); margin-bottom: 8px; letter-spacing: -0.02em; }
+.modal-subtitle { font-family: var(--font-body); font-size: 1rem; color: var(--text-muted); }
+
+.modal-close-btn { background: rgba(0, 0, 0, 0.05); border: none; width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; color: var(--text-muted); transition: all 0.2s ease; }
+.modal-close-btn:hover { background: rgba(0, 0, 0, 0.1); color: var(--text-main); transform: scale(1.05); }
+.modal-close-btn svg { width: 20px; height: 20px; }
+
+.modal-video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.modal-video-item { display: flex; flex-direction: column; gap: 16px; }
+.modal-video-label { font-family: var(--font-body); font-size: 1.1rem; font-weight: 600; color: var(--text-main); text-align: center; }
+
+.modal-iframe-wrapper { width: 100%; aspect-ratio: 3 / 4; border-radius: 16px; overflow: hidden; background: #000; box-shadow: 0 12px 30px rgba(0,0,0,0.15); border: 1px solid rgba(255, 255, 255, 0.3); position: relative; display: flex; justify-content: center; align-items: center; }
+.modal-iframe-wrapper iframe { width: 100%; height: 100%; transform: scale(1.035); }
+
+/* --- 交互劫持核心魔法 --- */
+/* 初始状态：遮罩不可见，允许点击原生 YouTube */
+.modal-interactive-overlay {
+    pointer-events: none;
+    z-index: 5;
+}
+/* 激活状态：阻断鼠标与 YouTube 的接触 */
+.modal-interactive-overlay.active {
+    pointer-events: auto;
+}
+
+/* 独立控制条初始状态：透明且不可点击 */
+.local-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+    transition: opacity 0.4s ease;
+}
+/* 激活状态：显示我们自己的进度条，允许点击 */
+.local-controls.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+@media (max-width: 1024px) { .modal-video-grid { grid-template-columns: 1fr; } .video-modal-content { max-height: 90vh; overflow-y: auto; } }
+
+
+/* ==========================================
+   纯前端极简轨迹图表 (SVG Infographic)
+   ========================================== */
+.intro-visual {
+    flex: 0.5;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    padding: 15px 15px 12px; /* 上左右下留白 */
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.traj-gallery {
+    display: flex;
+    width: 100%;
+
+    /* 👇 1. 改成居中对齐 */
+    justify-content: center;
+
+    /* 👇 2. 新增 gap 属性，这个数值就是图标之间的距离！(你可以自由调整 30px, 50px, 80px 等) */
+    gap: 120px;
+
+    align-items: center;
+    margin-bottom: 10px;
+}
+.traj-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+}
+
+/* SVG 尺寸和动画 */
+.traj-svg {
+    width: 80px;
+    height: 80px;
+    overflow: visible;
+    /* 增加悬浮放大的微交互 */
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.25, 1);
+}
+
+.traj-item:hover .traj-svg {
+    transform: scale(1.1) translateY(-5px);
+}
+
+/* 轨迹底部文字标签 */
+.traj-label {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-main);
+    letter-spacing: -0.01em;
+}
+
+/* 极简图例区域 */
+.traj-legend {
+    display: flex;
+    gap: 15px;
+    background: rgba(0, 0, 0, 0.04);
+    padding: 4px 12px;
+    border-radius: 50px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+.legend-dot.start-dot {
+    background: #111;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.legend-line {
+    width: 16px;
+    height: 3px;
+    border-radius: 2px;
+}
+.legend-line.gt-line {
+    background: #5265ff;
+}
+.legend-line.ext-line {
+    background: linear-gradient(90deg, #5265ff 0%, #f5a1ff 100%);
+    /* 模拟虚线效果 */
+    background-image: repeating-linear-gradient(90deg, transparent, transparent 3px, #a453ff 3px, #a453ff 6px);
+}
+
+
+/* ==========================================
+   图文并排布局 (Intro Container)
+   ========================================== */
+.intro-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;         /* 垂直居中 */
+    justify-content: space-between;
+    gap: 4vw;                    /* 左右间距 */
+    margin-top: 4vh;             /* 距离上方对比条 */
+    margin-bottom: 4vh;          /* 距离下方视频画廊 */
+    width: 100%;
+}
+
+.intro-text {
+    flex: 1.2;                     /* 占据左侧一半 */
+}
+
+/* 移动端适配 */
+@media (max-width: 1024px) {
+    .intro-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+}

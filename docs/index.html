@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OccSim: Multi-kilometer Simulation</title>
+    <link rel="icon" type="image/png" href="figures/logo.png">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
+    <!-- 左上角常驻 Logo -->
+    <div id="nav-logo" class="nav-logo">OccSim</div>
     <!-- 顶部导航栏 -->
     <nav class="glass-nav">
         <div class="nav-slider" id="nav-slider"></div>
@@ -33,30 +36,29 @@
                 <p class="affiliation">Learning, Embodied Autonomy, and Forecasting (LEAF) Lab, University of Toronto</p>
 
                 <div class="button-group">
-    <!-- 1. 修改了这里的 href，填入了真实的 arXiv 链接 -->
-    <a href="https://arxiv.org/abs/2603.28887" target="_blank" class="action-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-            <polyline points="14 2 14 8 20 8"></polyline>
-            <line x1="16" y1="13" x2="8" y2="13"></line>
-            <line x1="16" y1="17" x2="8" y2="17"></line>
-            <polyline points="10 9 9 9 8 9"></polyline>
-        </svg>
-        Arxiv
-    </a>
-    <!-- 2. 修改了这里的 href 填入 GitHub 链接，并去掉了 (coming soon) -->
-    <a href="https://github.com/Orbis36/OccSim" target="_blank" class="action-btn">
-        <svg viewBox="0 0 24 24" fill="currentColor" class="btn-icon">
-            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-        </svg>
-        Code
-    </a>
-</div>
+                    <a href="https://arxiv.org/abs/2603.28887" target="_blank" class="action-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                        Arxiv
+                    </a>
+                    <a href="https://github.com/Orbis36/OccSim" target="_blank" class="action-btn">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="btn-icon">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        Code
+                    </a>
+                </div>
             </div>
 
             <div class="showcase-container">
-                <!-- 视频容器 -->
+                <!-- 主视频容器 -->
                 <div class="video-wrapper">
+                    <!-- 这个是最早的主视频，保留 controls=0 因为它始终被挡着不用交互 -->
                     <iframe
                         id="hero-video"
                         src="https://www.youtube.com/embed/ENxERMeD-a4?autoplay=1&mute=1&loop=1&playlist=ENxERMeD-a4&controls=0&rel=0&enablejsapi=1"
@@ -109,8 +111,154 @@
 
         <!-- 第二页：Rollout with W-DiT -->
         <section id="rollout" class="page-section">
-            <div class="placeholder-content">
-                <h2>Rollout with W-DiT</h2>
+            <div class="hero-content">
+                <h1 class="title">Over 3000 frames static semantic occupancy <br> rollouts with W-DiT for diverse road map construction</h1>
+
+                <p class="section-subtitle">
+                    Tested on trajectory of varying difficulty (Straight, Zigzag, Closed-loop), <br>
+                    W-DiT structure presents the best stability and performance compare with previous design.
+                </p>
+
+                <div class="performance-container">
+                    <div class="perf-block">
+                        <h3 class="perf-title">Stable Rollout Length (Higher is better)</h3>
+                        <div class="apple-perf-item">
+                            <div class="apple-bar-row">
+                                <div class="apple-bar-track">
+                                    <div class="apple-bar gradient-bar" data-width="100%"></div>
+                                </div>
+                                <div class="apple-value highlight">3000</div>
+                            </div>
+                            <div class="apple-label">OccSim (Ours)</div>
+                        </div>
+                        <div class="apple-perf-item">
+                            <div class="apple-bar-row">
+                                <div class="apple-bar-track">
+                                    <div class="apple-bar gray-bar" data-width="2%"></div>
+                                </div>
+                                <div class="apple-value text-muted">&lt;40</div>
+                            </div>
+                            <div class="apple-label">Previous SoTA</div>
+                        </div>
+                    </div>
+
+                    <div class="perf-block">
+                        <h3 class="perf-title">Worst FID Score at 1000th frame under different trajectory (Lower is better)</h3>
+                        <div class="apple-perf-item">
+                            <div class="apple-bar-row">
+                                <div class="apple-bar-track">
+                                    <div class="apple-bar gradient-bar" data-width="28%"></div>
+                                </div>
+                                <div class="apple-value highlight">62.5</div>
+                            </div>
+                            <div class="apple-label">OccSim (Ours)</div>
+                        </div>
+                        <div class="apple-perf-item">
+                            <div class="apple-bar-row">
+                                <div class="apple-bar-track">
+                                    <div class="apple-bar gray-bar" data-width="85%"></div>
+                                </div>
+                                <div class="apple-value text-muted">183.6</div>
+                            </div>
+                            <div class="apple-label">Previous SoTA</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="intro-container">
+
+                    <!-- 左侧：说明文字 -->
+                    <div class="intro-text">
+                        <p class="section-subtitle video-subtitle" style="margin: 0;">
+                            Conditioned on the initial frame from various scenes in the Occ3D-nuScenes semantic occupancy dataset, we evaluate W-DiT's rollout capabilities across diverse driving trajectories (as illustrated in the animation on the right).
+                            Feel free to explore the three distinct scenarios visualized below. Notably, our model maintains robust generation stability even across long-horizon rollouts spanning thousands of frames.
+                        </p>
+                    </div>
+
+                    <!-- 右侧：轨迹图 (纯 SVG 极简矢量绘制) -->
+                    <div class="intro-visual">
+                        <div class="traj-gallery">
+                            <!-- 全局渐变定义 -->
+                            <svg style="width:0; height:0; position:absolute;" aria-hidden="true" focusable="false">
+                                <defs>
+                                    <linearGradient id="trajGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#5265ff" />
+                                        <stop offset="100%" stop-color="#f5a1ff" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+
+                            <!-- 1. Straight -->
+                            <div class="traj-item">
+                                <svg viewBox="0 0 100 100" class="traj-svg">
+                                    <line x1="20" y1="50" x2="40" y2="50" stroke="#5265ff" stroke-width="4" stroke-linecap="round"/>
+                                    <line x1="40" y1="50" x2="80" y2="50.1" stroke="url(#trajGrad)" stroke-width="4" stroke-linecap="round" stroke-dasharray="6,6"/>
+                                    <circle cx="20" cy="50" r="5" fill="#111" stroke="#fff" stroke-width="2"/>
+                                </svg>
+                                <span class="traj-label">Straight</span>
+                            </div>
+
+                            <!-- 2. Zigzag -->
+                            <div class="traj-item">
+                                <svg viewBox="0 0 100 100" class="traj-svg">
+                                    <polyline points="20,80 35,50" stroke="#5265ff" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <polyline points="35,50 65,80 80,20" stroke="url(#trajGrad)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6,6"/>
+                                    <circle cx="20" cy="80" r="5" fill="#111" stroke="#fff" stroke-width="2"/>
+                                </svg>
+                                <span class="traj-label">Zigzag</span>
+                            </div>
+
+                            <!-- 3. Closed-loop -->
+                            <div class="traj-item">
+                                <svg viewBox="0 0 100 100" class="traj-svg">
+                                    <path d="M 50 85 C 25 85, 15 65, 15 45" stroke="#5265ff" stroke-width="4" fill="none" stroke-linecap="round"/>
+                                    <path d="M 15 45 C 15 15, 85 15, 85 45 C 85 65, 75 85, 50 85" stroke="url(#trajGrad)" stroke-width="4" fill="none" stroke-linecap="round" stroke-dasharray="6,6"/>
+                                    <circle cx="50" cy="85" r="5" fill="#111" stroke="#fff" stroke-width="2"/>
+                                </svg>
+                                <span class="traj-label">Closed-loop</span>
+                            </div>
+                        </div>
+
+                        <!-- 极简图例 -->
+                        <div class="traj-legend">
+                            <div class="legend-item"><span class="legend-dot start-dot"></span>Start</div>
+                            <div class="legend-item"><span class="legend-line gt-line"></span>GT (1-40)</div>
+                            <div class="legend-item"><span class="legend-line ext-line"></span>Extended</div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="video-gallery-container">
+                    <!-- Thumbnail 1: Scene-039. 注意增加了 data-target 属性 -->
+                    <div class="video-thumbnail-card" data-target="modal-039">
+                        <div class="thumbnail-bg" style="background-image: url('figures/scene39-frame0.png');"></div>
+                        <div class="play-button-overlay">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <div class="thumbnail-label">Scene-039</div>
+                    </div>
+
+                    <!-- Thumbnail 2: Scene-221 -->
+                    <div class="video-thumbnail-card" data-target="modal-221">
+                        <div class="thumbnail-bg" style="background-image: url('figures/scene221-frame0.png');"></div>
+                        <div class="play-button-overlay">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <div class="thumbnail-label">Scene-221</div>
+                    </div>
+
+                    <!-- Thumbnail 3: Scene-632 -->
+                    <div class="video-thumbnail-card" data-target="modal-632">
+                        <div class="thumbnail-bg" style="background-image: url('figures/scene632-frame0.png');"></div>
+                        <div class="play-button-overlay">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <div class="thumbnail-label">Scene-632</div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -122,20 +270,235 @@
         </section>
     </div>
 
-    <!-- 右侧悬浮玻璃翻页按钮组 (必须在 scroll-container 外) -->
-    <!-- 向上翻页按钮 -->
+    <!-- 侧边翻页按钮 -->
     <button id="prev-page-btn" class="glass-floating-btn up-btn" aria-label="Previous Page" style="opacity: 0; pointer-events: none; transform: translateY(-50%) scale(0.8);">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="18 15 12 9 6 15"></polyline>
         </svg>
     </button>
-
-    <!-- 向下翻页按钮 -->
     <button id="next-page-btn" class="glass-floating-btn down-btn" aria-label="Next Page">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
     </button>
+
+    <!-- ========================================== -->
+    <!-- 视频弹窗区域：3 个独立的弹窗 -->
+    <!-- ========================================== -->
+
+    <!-- 弹窗 1：Scene-039 -->
+    <div id="modal-039" class="video-modal-overlay">
+        <div class="video-modal-content">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title">Scene-039 Trajectory Rollouts</h2>
+                    <p class="modal-subtitle">Compare model performance across Straight, Zigzag, and Closed-loop trajectories.</p>
+                </div>
+                <button class="modal-close-btn" aria-label="Close">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-video-grid">
+                <!-- 039 Straight -->
+                <div class="modal-video-item">
+                    <h3 class="modal-video-label">Straight Trajectory</h3>
+                    <div class="modal-iframe-wrapper">
+                        <!-- 去掉 controls=0 -->
+                        <iframe width="2560" height="1440" src="https://www.youtube.com/embed/-ZcNVQiOc7c?rel=0&enablejsapi=1&vq=hd1080" title="Scene 039 Straight" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="video-overlay modal-interactive-overlay"></div>
+                        <div class="custom-controls local-controls">
+                            <button class="control-btn local-play-btn">
+                                <svg class="local-pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                <svg class="local-play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                            <div class="progress-container local-progress-container">
+                                <div class="progress-bar local-progress-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 039 Zigzag -->
+                <div class="modal-video-item">
+                    <h3 class="modal-video-label">Zigzag Trajectory</h3>
+                    <div class="modal-iframe-wrapper">
+                        <iframe width="2560" height="1440" src="https://www.youtube.com/embed/CazL8kilYX8?rel=0&enablejsapi=1&vq=hd1080" title="Scene 039 Zigzag" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="video-overlay modal-interactive-overlay"></div>
+                        <div class="custom-controls local-controls">
+                            <button class="control-btn local-play-btn">
+                                <svg class="local-pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                <svg class="local-play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                            <div class="progress-container local-progress-container">
+                                <div class="progress-bar local-progress-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 039 Loop -->
+                <div class="modal-video-item">
+                    <h3 class="modal-video-label">Closed-loop Trajectory</h3>
+                    <div class="modal-iframe-wrapper">
+                        <iframe width="2560" height="1440" src="https://www.youtube.com/embed/MZ6JFxE_qj8?rel=0&enablejsapi=1&vq=hd1080" title="Scene 039 Loop" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="video-overlay modal-interactive-overlay"></div>
+                        <div class="custom-controls local-controls">
+                            <button class="control-btn local-play-btn">
+                                <svg class="local-pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                <svg class="local-play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                            <div class="progress-container local-progress-container">
+                                <div class="progress-bar local-progress-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 弹窗 2：Scene-221 -->
+    <div id="modal-221" class="video-modal-overlay">
+        <div class="video-modal-content">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title">Scene-221 Trajectory Rollouts</h2>
+                    <p class="modal-subtitle">Compare model performance across Straight, Zigzag, and Closed-loop trajectories.</p>
+                </div>
+                <button class="modal-close-btn" aria-label="Close">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-video-grid">
+                <!-- 221 Straight -->
+                <div class="modal-video-item">
+                    <h3 class="modal-video-label">Straight Trajectory</h3>
+                    <div class="modal-iframe-wrapper">
+                        <iframe width="2560" height="1440" src="https://www.youtube.com/embed/x-dnkjEpxcc?rel=0&enablejsapi=1&vq=hd1080" title="Scene 221 Straight" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="video-overlay modal-interactive-overlay"></div>
+                        <div class="custom-controls local-controls">
+                            <button class="control-btn local-play-btn">
+                                <svg class="local-pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                <svg class="local-play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                            <div class="progress-container local-progress-container">
+                                <div class="progress-bar local-progress-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 221 Zigzag -->
+                <div class="modal-video-item">
+                    <h3 class="modal-video-label">Zigzag Trajectory</h3>
+                    <div class="modal-iframe-wrapper">
+                        <iframe width="2560" height="1440" src="https://www.youtube.com/embed/UmMTjU9rAEI?rel=0&enablejsapi=1&vq=hd1080" title="Scene 221 Zigzag" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="video-overlay modal-interactive-overlay"></div>
+                        <div class="custom-controls local-controls">
+                            <button class="control-btn local-play-btn">
+                                <svg class="local-pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                <svg class="local-play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                            <div class="progress-container local-progress-container">
+                                <div class="progress-bar local-progress-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 221 Loop -->
+                <div class="modal-video-item">
+                    <h3 class="modal-video-label">Closed-loop Trajectory</h3>
+                    <div class="modal-iframe-wrapper">
+                        <iframe width="2560" height="1440" src="https://www.youtube.com/embed/oV-tX5jqs5M?rel=0&enablejsapi=1&vq=hd1080" title="Scene 221 Loop" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="video-overlay modal-interactive-overlay"></div>
+                        <div class="custom-controls local-controls">
+                            <button class="control-btn local-play-btn">
+                                <svg class="local-pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                <svg class="local-play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                            <div class="progress-container local-progress-container">
+                                <div class="progress-bar local-progress-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 弹窗 3：Scene-632 (原来的) -->
+    <div id="modal-632" class="video-modal-overlay">
+        <div class="video-modal-content">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title">Scene-632 Trajectory Rollouts</h2>
+                    <p class="modal-subtitle">Compare model performance across Straight, Zigzag, and Closed-loop trajectories.</p>
+                </div>
+                <button class="modal-close-btn" aria-label="Close">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-video-grid">
+                <!-- 632 Straight -->
+                <div class="modal-video-item">
+                    <h3 class="modal-video-label">Straight Trajectory</h3>
+                    <div class="modal-iframe-wrapper">
+                        <iframe width="2560" height="1440" src="https://www.youtube.com/embed/nJiKDmEmPls?rel=0&enablejsapi=1&vq=hd1080" title="Straight Trajectory" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="video-overlay modal-interactive-overlay"></div>
+                        <div class="custom-controls local-controls">
+                            <button class="control-btn local-play-btn">
+                                <svg class="local-pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                <svg class="local-play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                            <div class="progress-container local-progress-container">
+                                <div class="progress-bar local-progress-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 632 Zigzag -->
+                <div class="modal-video-item">
+                    <h3 class="modal-video-label">Zigzag Trajectory</h3>
+                    <div class="modal-iframe-wrapper">
+                        <iframe width="2560" height="1440" src="https://www.youtube.com/embed/SakjmhWfyFw?rel=0&enablejsapi=1&vq=hd1080" title="Zigzag Trajectory" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="video-overlay modal-interactive-overlay"></div>
+                        <div class="custom-controls local-controls">
+                            <button class="control-btn local-play-btn">
+                                <svg class="local-pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                <svg class="local-play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                            <div class="progress-container local-progress-container">
+                                <div class="progress-bar local-progress-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 632 Loop -->
+                <div class="modal-video-item">
+                    <h3 class="modal-video-label">Closed-loop Trajectory</h3>
+                    <div class="modal-iframe-wrapper">
+                        <iframe width="2560" height="1440" src="https://www.youtube.com/embed/orp0y61K48E?rel=0&enablejsapi=1&vq=hd1080" title="Closed-loop Trajectory" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="video-overlay modal-interactive-overlay"></div>
+                        <div class="custom-controls local-controls">
+                            <button class="control-btn local-play-btn">
+                                <svg class="local-pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                <svg class="local-play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                            <div class="progress-container local-progress-container">
+                                <div class="progress-bar local-progress-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
