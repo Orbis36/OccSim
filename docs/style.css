@@ -878,3 +878,43 @@ body::after {
     /* 针对透明底 PNG 的神级属性：根据图片内容的形状投射极为柔和的弥散阴影 */
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.06));
 }
+
+
+/* ==========================================
+   最后一页彩蛋：GPU 与 小蛋糕雨
+   ========================================== */
+@keyframes fallingRain {
+    0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.rain-item {
+    position: absolute;
+    top: -100px; /* 稍微调高一点，确保大图片完全在屏幕外生成 */
+    user-select: none;
+    will-change: transform;
+    animation: fallingRain linear forwards;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 🌟 新增：控制真实图片的大小和质感 */
+.rain-img {
+    width: 80px; /* 统一控制图片基础宽度，如果觉得太大或太小可以在这里修改 */
+    height: auto;
+    object-fit: contain;
+    /* 给 PNG 透明图加上非常柔和的弥散阴影，增加 3D 浮空感 */
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.15));
+}
+
+/* 🌟 可选：如果是 GPU，可以稍微加一点隐约的绿光阴影 */
+.gpu-img {
+    filter: drop-shadow(0 10px 20px rgba(118, 185, 0, 0.3));
+}

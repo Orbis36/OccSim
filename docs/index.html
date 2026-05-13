@@ -345,7 +345,7 @@
             <div class="intro-container" style="margin-top: 5vh; margin-bottom: 1vh;">
                 <div class="intro-text">
                     <p class="section-subtitle video-subtitle" style="margin: 0; font-size: 1.05rem; line-height: 1.4;">
-                        HD-map-free generation enables seamless map scaling to construct complex road networks. By integrating real-world agent assets and control algorithms onto this foundation,
+                        HD-map-free generation enables the scaling of driving scenario and construct complex road networks. By integrating real-world agent assets and control algorithms onto this foundation,
                         we facilitate effective pre-training for occupancy forecasting models. Models trained on data synthesized by OccSim (pre-trained on Waymo Occ) significantly outperform those trained on equivalent Carla datasets in 0-shot tests on UniScenes.
                         <b style="font-weight: 600; color: #000;">Even in the worst-case scenario (OccWorld), data collected from OccSim provides an 11% performance boost over Carla data, which further scales to 22.1% with 5x data expansion.</b>
                     </p>
@@ -420,6 +420,8 @@
 
         <section id="Acknowledgement" class="page-section">
             <div class="ack-content">
+                <div id="rain-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;"></div>
+
                 <h1 class="title">Acknowledgement & citation</h1>
                 <p class="ack-intro">This research was enabled in part by the following programs; we appreciate the resources provided:</p>
 
