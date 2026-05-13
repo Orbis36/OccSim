@@ -22,7 +22,7 @@
 <p align="center">
   <a href="https://arxiv.org/abs/2603.28887"><img src="https://img.shields.io/badge/Paper-PDF-85332e?style=for-the-badge&logo=arxiv" alt="Paper PDF"></a>
   &nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/Orbis36/OccSim"><img src="https://img.shields.io/badge/Project-Page-eb7943?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Project Page"></a>
+  <a href="https://orbis36.github.io/OccSim/"><img src="https://img.shields.io/badge/Project-Page-eb7943?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Project Page"></a>
   &nbsp;&nbsp;&nbsp;
   <a href="https://github.com/Orbis36/OccSim"><img src="https://komarev.com/ghpvc/?username=Orbis36-OccSim&label=PROFILE+VIEWS&color=2870b2&style=for-the-badge" alt="visitors"></a>
 </p>
