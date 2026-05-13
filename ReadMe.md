@@ -1,4 +1,4 @@
-<img src="./docs/figures/logo.png" width="15%" align="left">
+<img src="./docs/figures/logo.png" width="90" align="left">
 
 # OccSim: Multi-kilometer Simulation with Long-horizon Occupancy World Models
 
