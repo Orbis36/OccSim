@@ -324,11 +324,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (navLinks.length > 0) updateSlider(navLinks[0]);
 
-    const observerOptions = { root: scrollContainer, threshold: 0.5 };
+    const observerOptions = {
+        root: scrollContainer,
+        threshold: [0.1, 0.2, 0.3], // 使用多个阈值，增加灵敏度
+        rootMargin: "-10% 0px -10% 0px" // 稍微向内收缩，防止滚动边缘抖动
+    };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
+
+            if (entry.isIntersecting && entry.intersectionRatio > 0.15) {
                 const index = Array.from(sections).indexOf(entry.target);
                 if (index !== -1) {
                     navLinks.forEach(link => link.classList.remove('active'));

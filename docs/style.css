@@ -54,20 +54,20 @@ body::after {
 
 .scroll-container {
     height: 100vh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
+    overflow-y: auto; /* 改为 auto */
+    scroll-snap-type: y proximity; /* 改为 proximity，这样在内容过长时滚动更自然 */
     scroll-behavior: smooth;
 }
 
 .page-section {
-    height: 100vh;
+    min-height: 100vh; /* 保证至少占满一屏 */
+    height: auto;      /* 允许根据内容自动调整高度，不再强制死守一屏 */
     width: 100vw;
     scroll-snap-align: start;
-    position: relative;
-    padding: 12vh 5% 0;
+    padding: 100px 5% 60px; /* 增加上下留白，防止被导航栏遮挡 */
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center; /* 内容居中 */
 }
 
 .section-content {
@@ -100,6 +100,7 @@ body::after {
     max-width: 95vw;
     overflow-x: auto;
     scrollbar-width: none;
+    will-change: transform;
 }
 
 .glass-nav::-webkit-scrollbar { display: none; }
@@ -136,11 +137,11 @@ body::after {
 
 .title {
     font-family: var(--font-title);
-    font-size: 3rem;
+    /* 使用 clamp 让字体在 1.8rem 到 3rem 之间根据窗口大小自动缩放 */
+    font-size: clamp(1.8rem, 5vw, 3rem);
     font-weight: 500;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    margin-bottom: 1.2rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
     color: #111;
 }
 
@@ -368,6 +369,12 @@ body::after {
 @media (max-height: 700px) and (min-width: 1024px) and (orientation: landscape) {
     #main-demo { padding-top: 8vh; }
     .video-wrapper { height: 52vh; width: calc(52vh * 16 / 9); }
+}
+
+@media (max-height: 600px), (max-width: 1024px) {
+    .scroll-container {
+        scroll-snap-type: none; /* 小窗口下允许自由滚动，不再强制对齐 */
+    }
 }
 
 .author-link { color: var(--text-muted); text-decoration: none; transition: color 0.3s ease; position: relative; }
@@ -917,4 +924,43 @@ body::after {
 /* 🌟 可选：如果是 GPU，可以稍微加一点隐约的绿光阴影 */
 .gpu-img {
     filter: drop-shadow(0 10px 20px rgba(118, 185, 0, 0.3));
+}
+
+/* --- 针对中等屏幕（如平板）的优化 --- */
+@media (max-width: 1100px) {
+    .nav-logo {
+        font-size: 1.2rem; /* 缩小 Logo 字号 */
+        top: 28px;
+        left: 3vw;
+    }
+}
+
+/* --- 针对小窗口（如 GitHub 预览或手机）的优化 --- */
+@media (max-width: 850px) {
+    /* 1. 隐藏左上角固定 Logo，防止与导航栏重叠 */
+    .nav-logo {
+        display: none;
+    }
+
+    /* 2. 强化导航栏的模糊和遮盖能力 */
+    .glass-nav {
+        width: 92%; /* 稍微加宽一点，利用空间 */
+        padding: 4px;
+        /* 提高背景不透明度和模糊度，彻底解决重合时的视觉混乱 */
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(30px) saturate(180%);
+        -webkit-backdrop-filter: blur(30px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .nav-link {
+        padding: 8px 12px;
+        font-size: 12px; /* 缩小导航文字 */
+    }
+}
+
+@media (max-width: 1250px) {
+    .nav-logo {
+        display: none !important;
+    }
 }
