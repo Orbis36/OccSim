@@ -228,6 +228,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const prevBtn = document.getElementById('prev-page-btn');
     const nextBtn = document.getElementById('next-page-btn');
     const navLogo = document.getElementById('nav-logo');
+    const copyBtn = document.getElementById('copy-bib-btn');
+    const bibText = document.getElementById('bibtex-code');
 
     function updateSlider(link) {
         if (!slider) return;
@@ -269,14 +271,14 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                     }
 
-                    if (entry.target.id === 'rollout') {
+                    if (entry.target.id === 'rollout' || entry.target.id === 'diversity') {
                         const bars = entry.target.querySelectorAll('.apple-bar');
                         setTimeout(() => {
                             bars.forEach(bar => { bar.style.width = bar.getAttribute('data-width'); });
                         }, 200);
                     }
 
-                    if (entry.target.id === 'diversity') {
+                    if (entry.target.id === 'rollout' || entry.target.id === 'diversity') {
                         const container = entry.target.querySelector('.diversity-container');
                         if (container) {
                             container.classList.add('active');
@@ -407,4 +409,28 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
+    if (copyBtn && bibText) {
+        copyBtn.addEventListener('click', () => {
+            // 将 pre 标签中的文字复制到剪贴板
+            navigator.clipboard.writeText(bibText.innerText).then(() => {
+                const btnSpan = copyBtn.querySelector('span');
+                const originalText = btnSpan.innerText;
+
+                // 变成“已复制”状态的反馈
+                btnSpan.innerText = 'Copied!';
+                copyBtn.style.background = '#e8f5e9'; // 淡淡的绿色反馈
+                copyBtn.style.borderColor = '#4caf50';
+
+                // 2秒后恢复原样
+                setTimeout(() => {
+                    btnSpan.innerText = originalText;
+                    copyBtn.style.background = '#ffffff';
+                    copyBtn.style.borderColor = 'rgba(0, 0, 0, 0.1)';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        });
+    }
 });

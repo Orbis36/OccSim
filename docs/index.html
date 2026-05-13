@@ -243,7 +243,7 @@
 
             <p class="section-subtitle">
                 Given the same initial frame and the same straight trajectory, our model present SoTA generation diversity compared with previous occupancy world model. After 50s (100 frames, we use 6m/s speed to generate trajectory) <br>
-                 rollout, the branch road topology, vegetation / man-made presents obvious difference. <b style="font-weight: 600; color: #000;">Hover over the images to enlarge for better details.</b>
+                 rollout, the branch road topology, vegetation / man-made presents obvious difference (random seed 999 / 2026 / 3407). <b style="font-weight: 600; color: #000;">Hover over the images to enlarge for better details.</b>
             </p>
 
             <div class="diversity-container">
@@ -341,10 +341,123 @@
                     </div>
                 </div>
             </div>
+
+            <div class="intro-container" style="margin-top: 5vh; margin-bottom: 1vh;">
+                <div class="intro-text">
+                    <p class="section-subtitle video-subtitle" style="margin: 0; font-size: 1.05rem; line-height: 1.4;">
+                        HD-map-free generation enables seamless map scaling to construct complex road networks. By integrating real-world agent assets and control algorithms onto this foundation,
+                        we facilitate effective pre-training for occupancy forecasting models. Models trained on data synthesized by OccSim (pre-trained on Waymo Occ) significantly outperform those trained on equivalent Carla datasets in 0-shot tests on UniScenes.
+                        <b style="font-weight: 600; color: #000;">Even in the worst-case scenario (OccWorld), data collected from OccSim provides an 11% performance boost over Carla data, which further scales to 22.1% with 5x data expansion.</b>
+                    </p>
+                </div>
+            </div>
+
+            <div class="performance-container" style="margin-top: 2vh;">
+                <div class="perf-block">
+                    <h3 class="perf-title">OccWorld 3s average IoU (Deterministic Model)</h3>
+                    <div class="apple-perf-item">
+                        <div class="apple-bar-row">
+                            <div class="apple-bar-track">
+                                <div class="apple-bar gradient-bar" data-width="100%"></div>
+                            </div>
+                            <div class="apple-value highlight">18.08</div>
+                        </div>
+                        <div class="apple-label">OccSim (Ours 5x)</div>
+                    </div>
+                    <div class="apple-perf-item">
+                        <div class="apple-bar-row">
+                            <div class="apple-bar-track">
+                                <div class="apple-bar gradient-bar" data-width="91%"></div>
+                            </div>
+                            <div class="apple-value highlight">16.41</div>
+                        </div>
+                        <div class="apple-label">OccSim (Ours)</div>
+                    </div>
+                    <div class="apple-perf-item">
+                        <div class="apple-bar-row">
+                            <div class="apple-bar-track">
+                                <div class="apple-bar gray-bar" data-width="82%"></div>
+                            </div>
+                            <div class="apple-value text-muted">14.81</div>
+                        </div>
+                        <div class="apple-label">Pre-train on Carla</div>
+                    </div>
+                </div>
+
+                <div class="perf-block">
+                    <h3 class="perf-title">OccFM 3s average IoU (Stochastic Model)</h3>
+                    <div class="apple-perf-item">
+                        <div class="apple-bar-row">
+                            <div class="apple-bar-track">
+                                <div class="apple-bar gradient-bar" data-width="100%"></div>
+                            </div>
+                            <div class="apple-value highlight">21.40</div>
+                        </div>
+                        <div class="apple-label">OccSim (Ours 5x)</div>
+                    </div>
+                    <div class="apple-perf-item">
+                        <div class="apple-bar-row">
+                            <div class="apple-bar-track">
+                                <div class="apple-bar gradient-bar" data-width="69%"></div>
+                            </div>
+                            <div class="apple-value highlight">14.72</div>
+                        </div>
+                        <div class="apple-label">OccSim (Ours)</div>
+                    </div>
+                    <div class="apple-perf-item">
+                        <div class="apple-bar-row">
+                            <div class="apple-bar-track">
+                                <div class="apple-bar gray-bar" data-width="32%"></div>
+                            </div>
+                            <div class="apple-value text-muted">6.94</div>
+                        </div>
+                        <div class="apple-label">Pre-train on Carla</div>
+                    </div>
+                </div>
+            </div>
+
         </section>
 
         <section id="Acknowledgement" class="page-section">
-            <h1 class="title"> Acknowledgement & citation</h1>
+            <div class="ack-content">
+                <h1 class="title">Acknowledgement & citation</h1>
+                <p class="ack-intro">This research was enabled in part by the following programs; we appreciate the resources provided:</p>
+
+                <ul class="ack-list">
+                    <li>
+                        <strong>NVIDIA Applied Research Program:</strong> We gratefully acknowledge the generous computes support, which significantly accelerated our model training.
+                    </li>
+                    <li>
+                        <strong>Digital Research Alliance of Canada:</strong> For providing the computational infrastructure and at Nibi, Trillium and Naval cluster.
+                    </li>
+                    <li>
+                        <strong>Google TPU Research Cloud:</strong> For additional TPU resources grants at Google GCP.
+                    </li>
+                </ul>
+
+                <p class="ack-intro" style="margin-top: 50px;">Please use following format to cite our work if you find it's interesting</p>
+
+                <div class="cite-box">
+                    <pre id="bibtex-code">@article{liu2026occsim,
+  title={OccSim: Multi-kilometer Simulation with Long-horizon Occupancy World Models},
+  author={Liu, Tianran and Zhao, Shengwen and Pourkeshavarz, Mozhgan and Li, Weican and Rhinehart, Nicholas},
+  journal={arXiv preprint arXiv:2603.28887},
+  year={2026}
+}</pre>
+                    <button id="copy-bib-btn" class="copy-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy-icon">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        <span>Copy</span>
+                    </button>
+                </div>
+
+                <div class="footer-logo-container">
+                    <img src="figures/leaf_template_logo.png" alt="LEAF Lab, Vector Institute, and UofT Logos" class="footer-logo">
+                </div>
+
+            </div>
         </section>
     </div>
 
