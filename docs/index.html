@@ -10,19 +10,16 @@
     <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
-    <!-- 左上角常驻 Logo -->
     <div id="nav-logo" class="nav-logo">OccSim</div>
-    <!-- 顶部导航栏 -->
     <nav class="glass-nav">
         <div class="nav-slider" id="nav-slider"></div>
         <a href="#main-demo" class="nav-link active" data-index="0">Main Demo</a>
         <a href="#rollout" class="nav-link" data-index="1">Rollout with W-DiT</a>
-        <a href="#diversity" class="nav-link" data-index="2">Diversity & Experiments</a>
+        <a href="#diversity" class="nav-link" data-index="2">Diversity & Collected data</a>
+        <a href="#Acknowledgement" class="nav-link" data-index="3">Acknowledgment & citation</a>
     </nav>
 
-    <!-- 滚动容器 -->
     <div class="scroll-container">
-        <!-- 第一页：Main Demo -->
         <section id="main-demo" class="page-section">
             <div class="hero-content">
                 <h1 class="title">OccSim: Multi-kilometer simulation <br> with long-horizon occupancy world models</h1>
@@ -56,9 +53,7 @@
             </div>
 
             <div class="showcase-container">
-                <!-- 主视频容器 -->
                 <div class="video-wrapper">
-                    <!-- 这个是最早的主视频，保留 controls=0 因为它始终被挡着不用交互 -->
                     <iframe
                         id="hero-video"
                         src="https://www.youtube.com/embed/ENxERMeD-a4?autoplay=1&mute=1&loop=1&playlist=ENxERMeD-a4&controls=0&rel=0&enablejsapi=1"
@@ -79,7 +74,6 @@
                     </div>
                 </div>
 
-                <!-- 玻璃卡片容器 -->
                 <div class="feature-cards" id="feature-cards">
                     <div class="card">
                         <div class="card-content">
@@ -109,7 +103,6 @@
             </div>
         </section>
 
-        <!-- 第二页：Rollout with W-DiT -->
         <section id="rollout" class="page-section">
             <div class="hero-content">
                 <h1 class="title">Over 3000 frames static semantic occupancy <br> rollouts with W-DiT for diverse road map construction</h1>
@@ -165,21 +158,15 @@
                     </div>
                 </div>
 
-
                 <div class="intro-container">
-
-                    <!-- 左侧：说明文字 -->
                     <div class="intro-text">
                         <p class="section-subtitle video-subtitle" style="margin: 0;">
                             Conditioned on the initial frame from various scenes in the Occ3D-nuScenes semantic occupancy dataset, we evaluate W-DiT's rollout capabilities across diverse driving trajectories (as illustrated in the animation on the right).
                             Feel free to explore the three distinct scenarios visualized below. Notably, our model maintains robust generation stability even across long-horizon rollouts spanning thousands of frames.
                         </p>
                     </div>
-
-                    <!-- 右侧：轨迹图 (纯 SVG 极简矢量绘制) -->
                     <div class="intro-visual">
                         <div class="traj-gallery">
-                            <!-- 全局渐变定义 -->
                             <svg style="width:0; height:0; position:absolute;" aria-hidden="true" focusable="false">
                                 <defs>
                                     <linearGradient id="trajGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -189,7 +176,6 @@
                                 </defs>
                             </svg>
 
-                            <!-- 1. Straight -->
                             <div class="traj-item">
                                 <svg viewBox="0 0 100 100" class="traj-svg">
                                     <line x1="20" y1="50" x2="40" y2="50" stroke="#5265ff" stroke-width="4" stroke-linecap="round"/>
@@ -199,7 +185,6 @@
                                 <span class="traj-label">Straight</span>
                             </div>
 
-                            <!-- 2. Zigzag -->
                             <div class="traj-item">
                                 <svg viewBox="0 0 100 100" class="traj-svg">
                                     <polyline points="20,80 35,50" stroke="#5265ff" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
@@ -209,7 +194,6 @@
                                 <span class="traj-label">Zigzag</span>
                             </div>
 
-                            <!-- 3. Closed-loop -->
                             <div class="traj-item">
                                 <svg viewBox="0 0 100 100" class="traj-svg">
                                     <path d="M 50 85 C 25 85, 15 65, 15 45" stroke="#5265ff" stroke-width="4" fill="none" stroke-linecap="round"/>
@@ -220,19 +204,15 @@
                             </div>
                         </div>
 
-                        <!-- 极简图例 -->
                         <div class="traj-legend">
                             <div class="legend-item"><span class="legend-dot start-dot"></span>Start</div>
                             <div class="legend-item"><span class="legend-line gt-line"></span>GT (1-40)</div>
                             <div class="legend-item"><span class="legend-line ext-line"></span>Extended</div>
                         </div>
                     </div>
-
                 </div>
 
-
                 <div class="video-gallery-container">
-                    <!-- Thumbnail 1: Scene-039. 注意增加了 data-target 属性 -->
                     <div class="video-thumbnail-card" data-target="modal-039">
                         <div class="thumbnail-bg" style="background-image: url('figures/scene39-frame0.png');"></div>
                         <div class="play-button-overlay">
@@ -240,8 +220,6 @@
                         </div>
                         <div class="thumbnail-label">Scene-039</div>
                     </div>
-
-                    <!-- Thumbnail 2: Scene-221 -->
                     <div class="video-thumbnail-card" data-target="modal-221">
                         <div class="thumbnail-bg" style="background-image: url('figures/scene221-frame0.png');"></div>
                         <div class="play-button-overlay">
@@ -249,8 +227,6 @@
                         </div>
                         <div class="thumbnail-label">Scene-221</div>
                     </div>
-
-                    <!-- Thumbnail 3: Scene-632 -->
                     <div class="video-thumbnail-card" data-target="modal-632">
                         <div class="thumbnail-bg" style="background-image: url('figures/scene632-frame0.png');"></div>
                         <div class="play-button-overlay">
@@ -262,15 +238,116 @@
             </div>
         </section>
 
-        <!-- 第三页：Diversity & Experiments -->
         <section id="diversity" class="page-section">
-            <div class="placeholder-content">
-                <h2>Diversity & Experiments</h2>
+            <h1 class="title">Towards the next generation of Occupancy WM-centric simulation: <br> SoTA generation diversity & downstream pretrain</h1>
+
+            <p class="section-subtitle">
+                Given the same initial frame and the same straight trajectory, our model present SoTA generation diversity compared with previous occupancy world model. After 50s (100 frames, we use 6m/s speed to generate trajectory) <br>
+                 rollout, the branch road topology, vegetation / man-made presents obvious difference. <b style="font-weight: 600; color: #000;">Hover over the images to enlarge for better details.</b>
+            </p>
+
+            <div class="diversity-container">
+                <div class="scene-group" id="group-039">
+                    <div class="group-header">
+                        <h2>Scene-0039</h2>
+                        <p>Initial Frame & Multi-seed Rollouts</p>
+                    </div>
+                    <div class="visual-layout">
+                        <div class="initial-box">
+                            <img src="figures/diversity/scene039_init.png" alt="Initial Frame" class="zoomable-img">
+                            <span>Initial Frame</span>
+                            <div class="flow-origin"></div>
+                        </div>
+
+                    <svg class="flow-svg" viewBox="0 0 40 280">
+                        <defs>
+                            <linearGradient id="flowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#5265ff" />
+                                <stop offset="100%" stop-color="#f5a1ff" />
+                            </linearGradient>
+                        </defs>
+                        <path class="flow-path" pathLength="100" d="M 0,140 C 12,140 20,132 20,115 L 20,45 C 20,28 28,20 40,20" />
+                        <path class="flow-path" pathLength="100" d="M 0,140 L 40,140.01" />
+                        <path class="flow-path" pathLength="100" d="M 0,140 C 12,140 20,148 20,165 L 20,235 C 20,252 28,260 40,260" />
+                    </svg>
+
+                        <div class="prediction-grid">
+                            <div class="time-labels"><span>5s</span><span>10s</span><span>25s</span><span>50s</span></div>
+                            <div class="seed-row" data-seed="999">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene039_999_5s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene039_999_10s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene039_999_25s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene039_999_50s.png">
+                                <div class="seed-label">Seed 999</div>
+                            </div>
+                            <div class="seed-row" data-seed="2026">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene039_2026_5s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene039_2026_10s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene039_2026_25s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene039_2026_50s.png">
+                                <div class="seed-label">Seed 2026</div>
+                            </div>
+                            <div class="seed-row" data-seed="3047">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene039_3407_5s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene039_3407_10s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene039_3407_25s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene039_3407_50s.png">
+                                <div class="seed-label">Seed 3407</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scene-group" id="group-105">
+                    <div class="group-header">
+                        <h2>Scene-0105</h2>
+                        <p>Initial Frame & Multi-seed Rollouts</p>
+                    </div>
+                    <div class="visual-layout">
+                        <div class="initial-box">
+                            <img src="figures/diversity/scene105_init.png" alt="Initial Frame" class="zoomable-img">
+                            <span>Initial Frame</span>
+                            <div class="flow-origin"></div>
+                        </div>
+                        <svg class="flow-svg" viewBox="0 0 40 280">
+                            <path class="flow-path" pathLength="100" d="M 0,140 C 12,140 20,132 20,115 L 20,45 C 20,28 28,20 40,20" />
+                            <path class="flow-path" pathLength="100" d="M 0,140 L 40,140.01" />
+                            <path class="flow-path" pathLength="100" d="M 0,140 C 12,140 20,148 20,165 L 20,235 C 20,252 28,260 40,260" />
+                        </svg>
+                        <div class="prediction-grid">
+                            <div class="time-labels"><span>5s</span><span>10s</span><span>25s</span><span>50s</span></div>
+                            <div class="seed-row" data-seed="999">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene105_999_5s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene105_999_10s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene105_999_25s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene105_999_50s.png">
+                                <div class="seed-label">Seed 999</div>
+                            </div>
+                            <div class="seed-row" data-seed="2026">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene105_2026_5s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene105_2026_10s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene105_2026_25s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene105_2026_50s.png">
+                                <div class="seed-label">Seed 2026</div>
+                            </div>
+                            <div class="seed-row" data-seed="3047">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene105_3407_5s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene105_3407_10s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene105_3407_25s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene105_3407_50s.png">
+                                <div class="seed-label">Seed 3047</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </section>
+
+        <section id="Acknowledgement" class="page-section">
+            <h1 class="title"> Acknowledgement & citation</h1>
         </section>
     </div>
 
-    <!-- 侧边翻页按钮 -->
     <button id="prev-page-btn" class="glass-floating-btn up-btn" aria-label="Previous Page" style="opacity: 0; pointer-events: none; transform: translateY(-50%) scale(0.8);">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="18 15 12 9 6 15"></polyline>
@@ -282,11 +359,6 @@
         </svg>
     </button>
 
-    <!-- ========================================== -->
-    <!-- 视频弹窗区域：3 个独立的弹窗 -->
-    <!-- ========================================== -->
-
-    <!-- 弹窗 1：Scene-039 -->
     <div id="modal-039" class="video-modal-overlay">
         <div class="video-modal-content">
             <div class="modal-header">
@@ -302,11 +374,9 @@
                 </button>
             </div>
             <div class="modal-video-grid">
-                <!-- 039 Straight -->
                 <div class="modal-video-item">
                     <h3 class="modal-video-label">Straight Trajectory</h3>
                     <div class="modal-iframe-wrapper">
-                        <!-- 去掉 controls=0 -->
                         <iframe width="2560" height="1440" src="https://www.youtube.com/embed/-ZcNVQiOc7c?rel=0&enablejsapi=1&vq=hd1080" title="Scene 039 Straight" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         <div class="video-overlay modal-interactive-overlay"></div>
                         <div class="custom-controls local-controls">
@@ -320,7 +390,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- 039 Zigzag -->
                 <div class="modal-video-item">
                     <h3 class="modal-video-label">Zigzag Trajectory</h3>
                     <div class="modal-iframe-wrapper">
@@ -337,7 +406,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- 039 Loop -->
                 <div class="modal-video-item">
                     <h3 class="modal-video-label">Closed-loop Trajectory</h3>
                     <div class="modal-iframe-wrapper">
@@ -358,7 +426,6 @@
         </div>
     </div>
 
-    <!-- 弹窗 2：Scene-221 -->
     <div id="modal-221" class="video-modal-overlay">
         <div class="video-modal-content">
             <div class="modal-header">
@@ -374,7 +441,6 @@
                 </button>
             </div>
             <div class="modal-video-grid">
-                <!-- 221 Straight -->
                 <div class="modal-video-item">
                     <h3 class="modal-video-label">Straight Trajectory</h3>
                     <div class="modal-iframe-wrapper">
@@ -391,7 +457,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- 221 Zigzag -->
                 <div class="modal-video-item">
                     <h3 class="modal-video-label">Zigzag Trajectory</h3>
                     <div class="modal-iframe-wrapper">
@@ -408,7 +473,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- 221 Loop -->
                 <div class="modal-video-item">
                     <h3 class="modal-video-label">Closed-loop Trajectory</h3>
                     <div class="modal-iframe-wrapper">
@@ -429,7 +493,6 @@
         </div>
     </div>
 
-    <!-- 弹窗 3：Scene-632 (原来的) -->
     <div id="modal-632" class="video-modal-overlay">
         <div class="video-modal-content">
             <div class="modal-header">
@@ -445,7 +508,6 @@
                 </button>
             </div>
             <div class="modal-video-grid">
-                <!-- 632 Straight -->
                 <div class="modal-video-item">
                     <h3 class="modal-video-label">Straight Trajectory</h3>
                     <div class="modal-iframe-wrapper">
@@ -462,7 +524,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- 632 Zigzag -->
                 <div class="modal-video-item">
                     <h3 class="modal-video-label">Zigzag Trajectory</h3>
                     <div class="modal-iframe-wrapper">
@@ -479,7 +540,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- 632 Loop -->
                 <div class="modal-video-item">
                     <h3 class="modal-video-label">Closed-loop Trajectory</h3>
                     <div class="modal-iframe-wrapper">
