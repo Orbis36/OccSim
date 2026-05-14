@@ -1,0 +1,208 @@
+/* ============================================================
+   第四页：致谢与引用 (Acknowledgement & citation)
+   ============================================================ */
+.ack-content {
+    max-width: 900px;
+    margin: 5vh auto 0; /* 居中并向下空出一点距离 */
+    text-align: left;
+    width: 100%;
+}
+
+.ack-intro {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* 现代版 itemize 容器 */
+.ack-list {
+    list-style-type: none; /* 移除默认的丑陋黑点 */
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* 每个项目之间的间距 */
+}
+
+/* 列表项：做成玻璃卡片的样式 */
+.ack-list li {
+    position: relative;
+    font-size: 1.05rem;
+    color: var(--text-main);
+    line-height: 1.6;
+
+    /* 玻璃卡片背景 */
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 16px;
+    padding: 20px 24px 20px 50px; /* 左侧留出 50px 给自定义小圆点 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+
+    /* 悬浮动画过渡 */
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.25, 1), box-shadow 0.3s ease, background 0.3s ease;
+}
+
+/* 鼠标放上去时的互动效果 */
+.ack-list li:hover {
+    transform: translateX(10px); /* 整体向右微微滑动 */
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    border-color: rgba(255, 255, 255, 1);
+}
+
+/* 自定义高颜值发光小圆点 (伪元素) */
+.ack-list li::before {
+    content: '';
+    position: absolute;
+    left: 24px;
+    top: 28px; /* 根据你的字体大小，微调这个数值让圆点和第一行文字垂直居中 */
+    width: 8px;
+    height: 8px;
+    background-color: #8e44ff; /* 使用你网页主题的紫色 */
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(142, 68, 255, 0.5); /* 发光效果 */
+    transition: transform 0.3s ease;
+}
+
+.ack-list li:hover::before {
+    transform: scale(1.5); /* 鼠标悬浮时，小圆点也会跟着变大 */
+}
+
+/* 机构名字加粗部分 */
+.ack-list li strong {
+    font-weight: 600;
+    color: #111;
+}
+
+/* ============================================================
+   第四页：引用代码盒样式 (Citation Code Box)
+   ============================================================ */
+.cite-box {
+    position: relative;
+    background: rgba(0, 0, 0, 0.04); /* 稍深的背景色，体现代码块质感 */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    padding: 24px;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.cite-box pre {
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace; /* 使用等宽字体 */
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #333;
+    white-space: pre-wrap; /* 自动换行防止溢出 */
+    word-break: break-all;
+}
+
+/* 复制按钮样式 */
+.copy-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #111;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.copy-btn:hover {
+    background: #f8f8f8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.copy-btn:active {
+    transform: scale(0.96);
+}
+
+.copy-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* ============================================================
+   第四页：底部实验室与赞助商 Logo (Footer Logo)
+   ============================================================ */
+.footer-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8vh;       /* 与上方的引用代码框拉开足够的呼吸空间 */
+    padding-bottom: 4vh;   /* 距离页面最底部留白 */
+    width: 100%;
+
+    /* 默认微微透明，显得克制且有高级感 */
+    opacity: 0.75;
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 鼠标悬浮时的交互反馈 */
+.footer-logo-container:hover {
+    opacity: 1;              /* 恢复完全清晰 */
+    transform: translateY(-4px); /* 轻轻向上浮动 */
+}
+
+.footer-logo {
+    width: 85%;              /* 移动端响应式：最多占屏幕 85% */
+    max-width: 380px;        /* PC 端限制最大宽度，防止 Logo 被拉得过于巨大 */
+    height: auto;
+    object-fit: contain;
+
+    /* 针对透明底 PNG 的神级属性：根据图片内容的形状投射极为柔和的弥散阴影 */
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.06));
+}
+
+
+/* ==========================================
+   最后一页彩蛋：GPU 与 小蛋糕雨
+   ========================================== */
+@keyframes fallingRain {
+    0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.rain-item {
+    position: absolute;
+    top: -100px; /* 稍微调高一点，确保大图片完全在屏幕外生成 */
+    user-select: none;
+    will-change: transform;
+    animation: fallingRain linear forwards;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 🌟 新增：控制真实图片的大小和质感 */
+.rain-img {
+    width: 80px; /* 统一控制图片基础宽度，如果觉得太大或太小可以在这里修改 */
+    height: auto;
+    object-fit: contain;
+    /* 给 PNG 透明图加上非常柔和的弥散阴影，增加 3D 浮空感 */
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.15));
+}
+
+/* 🌟 可选：如果是 GPU，可以稍微加一点隐约的绿光阴影 */
+.gpu-img {
+    filter: drop-shadow(0 10px 20px rgba(118, 185, 0, 0.3));
+}

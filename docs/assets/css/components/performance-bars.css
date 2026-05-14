@@ -1,0 +1,49 @@
+.performance-container { display: flex; flex-direction: row; gap: 2vw; margin-top: 5vh; width: 100%; }
+.perf-block { flex: 1; display: flex; flex-direction: column; gap: 5px; background: rgba(255, 255, 255, 0.35); backdrop-filter: blur(40px) saturate(150%); -webkit-backdrop-filter: blur(40px) saturate(150%); border: 1px solid rgba(255, 255, 255, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.9); border-left: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06), inset 0 0 20px rgba(255, 255, 255, 0.3); border-radius: 28px; padding: 24px 40px; }
+.perf-title { font-family: var(--font-body); font-size: 1.1rem; font-weight: 600; color: var(--text-main); margin-bottom: -10px; }
+.apple-perf-item { display: flex; flex-direction: column; gap: 6px; }
+.apple-bar-row { display: flex; align-items: center; gap: 20px; }
+.apple-bar-track { flex-grow: 1; height: 8px; background-color: transparent; border-radius: 5px; }
+.apple-bar { height: 100%; border-radius: 5px; width: 0; transition: width 2.5s cubic-bezier(0.25, 1, 0.25, 1); }
+.apple-bar.gradient-bar { background: linear-gradient(90deg, #f5a1ff 0%, #a453ff 50%, #5265ff 100%); }
+.apple-bar.gray-bar { background-color: #86868b; }
+.apple-value { font-family: var(--font-body); font-size: 2.2rem; font-weight: 500; line-height: 1; min-width: 90px; text-align: right; letter-spacing: -0.02em; }
+.apple-value.highlight { color: #8e44ff; }
+.apple-value.text-muted { color: #86868b; }
+.apple-label { font-family: var(--font-body); font-size: 1rem; color: var(--text-main); }
+
+/* ==========================================
+   仅针对第三页 (#diversity) 缩小的性能对比图样式
+   ========================================== */
+
+/* 1. 缩小容器间距 */
+#diversity .performance-container { display: flex; flex-direction: row; gap: 2vw; margin-top: 2vh; width: 100%; }
+
+/* 2. 缩小卡片本身的内边距和圆角 */
+#diversity .perf-block {
+    flex: 1; display: flex; flex-direction: column; gap: 2px;
+    background: rgba(255, 255, 255, 0.35); backdrop-filter: blur(40px) saturate(150%); -webkit-backdrop-filter: blur(40px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.9); border-left: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06), inset 0 0 20px rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 16px 28px;
+}
+
+/* 3. 缩小标题字体 */
+#diversity .perf-title { font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; color: var(--text-main); margin-bottom: 0px; }
+
+#diversity .apple-perf-item { display: flex; flex-direction: column; gap: 2px; }
+
+/* 4. 缩小进度条和数字的距离 */
+#diversity .apple-bar-row { display: flex; align-items: center; gap: 12px; }
+
+/* 5. 缩小进度条的粗细 */
+#diversity .apple-bar-track { flex-grow: 1; height: 6px; background-color: transparent; border-radius: 4px; }
+
+/* 6. 大幅缩小数字的字体大小 */
+#diversity .apple-value { font-family: var(--font-body); font-size: 1.6rem; font-weight: 500; line-height: 1; min-width: 60px; text-align: right; letter-spacing: -0.02em; }
+
+/* 7. 缩小底部小标签的字体大小 */
+#diversity .apple-label { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-main); margin-top: -2px;}
+
+@media (max-width: 1024px) { .performance-container { flex-direction: column; gap: 50px; } }

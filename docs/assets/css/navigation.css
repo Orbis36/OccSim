@@ -1,0 +1,124 @@
+.glass-nav {
+    position: fixed;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 40px;
+    padding: 6px;
+    z-index: 1000;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+    white-space: nowrap;
+    max-width: 95vw;
+    overflow-x: auto;
+    scrollbar-width: none;
+    will-change: transform;
+}
+
+.glass-nav::-webkit-scrollbar { display: none; }
+
+.nav-link {
+    position: relative;
+    text-decoration: none;
+    color: var(--text-muted);
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 30px;
+    z-index: 2;
+    transition: color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.nav-link.active { color: var(--text-main); }
+
+.nav-slider {
+    position: absolute;
+    top: 6px; left: 6px;
+    height: calc(100% - 12px);
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 30px;
+    z-index: 1;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.nav-logo { position: fixed; top: 32px; left: 5vw; font-family: var(--font-title); font-weight: 500; font-size: 1.8rem; letter-spacing: -0.01em; color: #111; z-index: 1001; opacity: 0; transform: translateX(-20px); transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); pointer-events: none; }
+.nav-logo.visible { opacity: 1; transform: translateX(0); pointer-events: auto; }
+
+.glass-floating-btn {
+    position: fixed;
+    right: 3vw;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.8);
+    border-left: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    display: flex; justify-content: center; align-items: center;
+    color: #111; cursor: pointer; z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.up-btn { top: calc(20% - 35px); }
+.down-btn { top: calc(20% + 35px); }
+
+.glass-floating-btn svg { width: 24px; height: 24px; transition: transform 0.3s ease; }
+
+.glass-floating-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+.up-btn:hover { transform: translateY(-4px) scale(1.1) !important; }
+.up-btn:hover svg { transform: translateY(-3px); }
+.down-btn:hover { transform: translateY(4px) scale(1.1) !important; }
+.down-btn:hover svg { transform: translateY(3px); }
+
+/* --- 针对中等屏幕（如平板）的优化 --- */
+@media (max-width: 1100px) {
+    .nav-logo {
+        font-size: 1.2rem; /* 缩小 Logo 字号 */
+        top: 28px;
+        left: 3vw;
+    }
+}
+
+/* --- 针对小窗口（如 GitHub 预览或手机）的优化 --- */
+@media (max-width: 850px) {
+    /* 1. 隐藏左上角固定 Logo，防止与导航栏重叠 */
+    .nav-logo {
+        display: none;
+    }
+
+    /* 2. 强化导航栏的模糊和遮盖能力 */
+    .glass-nav {
+        width: 92%; /* 稍微加宽一点，利用空间 */
+        padding: 4px;
+        /* 提高背景不透明度和模糊度，彻底解决重合时的视觉混乱 */
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(30px) saturate(180%);
+        -webkit-backdrop-filter: blur(30px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .nav-link {
+        padding: 8px 12px;
+        font-size: 12px; /* 缩小导航文字 */
+    }
+}
+
+@media (max-width: 1250px) {
+    .nav-logo {
+        display: none !important;
+    }
+}

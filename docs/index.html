@@ -5,8 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OccSim: Multi-kilometer Simulation</title>
     <link rel="icon" type="image/png" href="figures/logo.png">
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Base & layout -->
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/navigation.css">
+
+    <!-- Reusable components -->
+    <link rel="stylesheet" href="assets/css/components/video-player.css">
+    <link rel="stylesheet" href="assets/css/components/feature-cards.css">
+    <link rel="stylesheet" href="assets/css/components/performance-bars.css">
+    <link rel="stylesheet" href="assets/css/components/modal.css">
+
+    <!-- Per-section styles -->
+    <link rel="stylesheet" href="assets/css/sections/main-demo.css">
+    <link rel="stylesheet" href="assets/css/sections/rollout.css">
+    <link rel="stylesheet" href="assets/css/sections/diversity.css">
+    <link rel="stylesheet" href="assets/css/sections/acknowledgement.css">
+
     <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
@@ -677,6 +693,15 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Library / shared globals (must load before consumers) -->
+    <script src="assets/js/youtube-player.js"></script>
+    <script src="assets/js/rain.js"></script>
+
+    <!-- UI behavior modules -->
+    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/cards.js"></script>
+    <script src="assets/js/zoom.js"></script>
+    <script src="assets/js/modal.js"></script>
+    <script src="assets/js/citation.js"></script>
 </body>
 </html>

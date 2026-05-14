@@ -1,0 +1,92 @@
+:root {
+    --bg-color: #f2f4f8;
+    --text-main: #1d1d1f;
+    --text-muted: #515154;
+    --btn-bg: #ffffff;
+    --btn-hover: #e5e5ea;
+    --font-title: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    overflow: hidden;
+    position: relative;
+}
+
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    width: 70vw;
+    height: 70vw;
+    border-radius: 50%;
+    filter: blur(120px);
+    -webkit-filter: blur(120px);
+    z-index: -1;
+    opacity: 0.6;
+    pointer-events: none;
+    animation: aurora 12s infinite ease-in-out alternate;
+}
+
+body::before {
+    background: radial-gradient(circle, rgba(45, 185, 255, 0.6) 0%, rgba(255, 255, 255, 0) 70%);
+    top: -15vw;
+    left: -10vw;
+}
+
+body::after {
+    background: radial-gradient(circle, rgba(0, 175, 0, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+    bottom: -15vw;
+    right: -10vw;
+    animation-delay: -5s;
+}
+
+@keyframes aurora {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(15vw, 20vw) scale(1.3); }
+    100% { transform: translate(-20vw, 10vw) scale(0.8); }
+}
+
+.scroll-container {
+    height: 100vh;
+    overflow-y: auto; /* 改为 auto */
+    scroll-snap-type: y proximity; /* 改为 proximity，这样在内容过长时滚动更自然 */
+    scroll-behavior: smooth;
+}
+
+.page-section {
+    min-height: 100vh; /* 保证至少占满一屏 */
+    height: auto;      /* 允许根据内容自动调整高度，不再强制死守一屏 */
+    width: 100vw;
+    scroll-snap-align: start;
+    padding: 100px 5% 60px; /* 增加上下留白，防止被导航栏遮挡 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 内容居中 */
+}
+
+.section-content {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+#main-demo {
+    justify-content: flex-start;
+    padding-top: 12vh;
+}
+
+.placeholder-content { display: flex; justify-content: center; align-items: center; height: 100%; font-size: 2rem; color: #aaa; }
+#rollout { background-color: rgba(255, 255, 255, 0.2); backdrop-filter: blur(20px); }
+#diversity { background-color: rgba(255, 255, 255, 0.4); backdrop-filter: blur(20px); }
+
+@media (max-height: 600px), (max-width: 1024px) {
+    .scroll-container {
+        scroll-snap-type: none; /* 小窗口下允许自由滚动，不再强制对齐 */
+    }
+}
