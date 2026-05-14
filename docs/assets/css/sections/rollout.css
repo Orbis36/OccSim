@@ -1,0 +1,69 @@
+.section-subtitle { font-family: var(--font-title); font-size: 1.2rem; color: var(--text-muted); opacity: 0.85; line-height: 1.3; letter-spacing: 0.01em; margin-top: 50px; margin-bottom: -20px; animation: fadeInSubtitle 1s ease-out forwards; }
+.video-subtitle {
+    text-align: left;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    font-size: 1.2rem;
+    line-height: 1.4;
+    margin-top: 4vh;
+    margin-bottom: 2vh;
+}
+
+@keyframes fadeInSubtitle {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 0.85; transform: translateY(0); }
+}
+
+.video-gallery-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
+    max-width: 1900px;
+    margin: 2vh auto 0;
+}
+
+.video-thumbnail-card {
+    flex: 1;
+    aspect-ratio: 16 / 9;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    border: 4px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.25, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.thumbnail-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; filter: brightness(0.8) blur(2px); transition: filter 0.4s ease, transform 0.8s ease; }
+.play-button-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(1); width: 60px; height: 60px; border-radius: 50%; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(12px) saturate(150%); -webkit-backdrop-filter: blur(12px) saturate(150%); border: 1px solid rgba(255, 255, 255, 0.5); display: flex; justify-content: center; align-items: center; color: white; transition: all 0.4s cubic-bezier(0.25, 1, 0.25, 1); z-index: 2; }
+.play-button-overlay svg { width: 28px; height: 28px; margin-left: 4px; }
+.thumbnail-label { position: absolute; bottom: 12px; left: 16px; color: white; font-family: var(--font-body); font-size: 0.9rem; font-weight: 500; text-shadow: 0 2px 4px rgba(0,0,0,0.5); z-index: 2; opacity: 0.9; }
+
+.video-thumbnail-card:hover { transform: translateY(-6px); border-color: rgba(255, 255, 255, 0.9); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 1); }
+.video-thumbnail-card:hover .thumbnail-bg { filter: brightness(0.9) blur(0px); transform: scale(1.05); }
+.video-thumbnail-card:hover .play-button-overlay { background: rgba(255, 255, 255, 0.4); transform: translate(-50%, -50%) scale(1.1); }
+
+@media (max-width: 768px) { .video-gallery-container { flex-direction: column; gap: 20px; } }
+
+.intro-visual { flex: 0.5; background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(20px) saturate(150%); -webkit-backdrop-filter: blur(20px) saturate(150%); border: 1px solid rgba(255, 255, 255, 0.5); border-radius: 20px; padding: 15px 15px 12px; box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05); display: flex; flex-direction: column; justify-content: center; align-items: center; }
+
+.traj-gallery { display: flex; width: 100%; justify-content: center; gap: 120px; align-items: center; margin-bottom: 10px; }
+.traj-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.traj-svg { width: 80px; height: 80px; overflow: visible; transition: transform 0.3s cubic-bezier(0.25, 1, 0.25, 1); }
+.traj-item:hover .traj-svg { transform: scale(1.1) translateY(-5px); }
+.traj-label { font-family: var(--font-body); font-size: 0.9rem; font-weight: 600; color: var(--text-main); letter-spacing: -0.01em; }
+.traj-legend { display: flex; gap: 15px; background: rgba(0, 0, 0, 0.04); padding: 4px 12px; border-radius: 50px; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-family: var(--font-body); font-size: 0.8rem; color: var(--text-muted); }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+.legend-dot.start-dot { background: #111; border: 2px solid #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+.legend-line { width: 16px; height: 3px; border-radius: 2px; }
+.legend-line.gt-line { background: #5265ff; }
+.legend-line.ext-line { background: linear-gradient(90deg, #5265ff 0%, #f5a1ff 100%); background-image: repeating-linear-gradient(90deg, transparent, transparent 3px, #a453ff 3px, #a453ff 6px); }
+
+.intro-container { display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 4vw; margin-top: 4vh; margin-bottom: 4vh; width: 100%; }
+.intro-text { flex: 1.2; }
+
+@media (max-width: 1024px) { .intro-container { flex-direction: column; gap: 20px; } }

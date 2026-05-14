@@ -1,0 +1,177 @@
+/* ==========================================
+   第三页：多样性展示 (Diversity Section)
+   ========================================== */
+#diversity {
+    padding-top: 10vh;
+}
+
+#diversity .section-subtitle {
+    margin-top: 10px; /* 默认是 50px，现在改小让它贴近标题 */
+    margin-bottom: 2vh; /* 顺便微调一下和下方图片的间距 */
+}
+
+/* 1. 全局容器：极限靠近 */
+.diversity-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1vw;                /* 🌟 极致缩小两大块的中间缝隙 */
+    width: 100%;
+    max-width: 98vw;         /* 占满整个屏幕 */
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+/* 2. 单个场景 Box：移除多余内边距 */
+.scene-group {
+    flex: 1;
+    padding: 0 5px;          /* 🌟 上下为0，左右仅留 5px 的极小边距 */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.group-header {
+    margin-bottom: 2vh;
+    text-align: left;
+    width: 100%;
+}
+
+.group-header h2 {
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.group-header p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.visual-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+}
+
+/* 3. 左侧初始帧：压缩占用比例，把空间让给右侧 */
+.initial-box {
+    flex: 0 0 14%;           /* 🌟 从原来的 20% 压缩到 14% */
+    max-width: 140px;        /* 🌟 缩小最大宽度限制 */
+    position: relative;
+    text-align: center;
+}
+
+.initial-box img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: 2px solid white;
+}
+
+.initial-box span {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* 4. 中间箭头：压缩左右两边的空白 */
+.flow-svg {
+    flex: 0 0 40px;
+    width: 40px;
+    min-width: 40px;
+    height: 280px;
+    margin: 0 5px;           /* 🌟 左右 Margin 从 15px 缩减到 5px */
+    overflow: visible;
+}
+
+.flow-path {
+    fill: none;
+    stroke: url(#flowGrad);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    transition: stroke-dashoffset 0.8s ease-in-out;
+}
+
+/* 5. 预测网格区：现在它获得了前面省下来的所有空间！ */
+.prediction-grid {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vh;
+    position: relative;
+}
+
+.time-labels {
+    position: absolute;
+    top: -35px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #555;
+}
+
+.time-labels span {
+    width: 24.8%;            /* 🌟 必须与下方图片的比例保持一致 */
+    text-align: center;
+}
+
+.seed-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+/* 6. 单张预测图片：占比拉满 */
+.pred-img {
+    width: 24.8%;            /* 🌟 极限撑满剩余宽度（原来是24.5%） */
+    border-radius: 8px;
+    opacity: 0;
+    transform: scale(0.8) translateX(-10px);
+    transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    position: relative;
+    z-index: 1;
+}
+
+.seed-label {
+    display: none;
+}
+
+.diversity-container.active .flow-path {
+    stroke-dashoffset: 0;
+}
+
+.diversity-container.active .pred-img.show {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+}
+
+/* ============================================================
+   自身毛玻璃效果：仅为克隆出来的放大图片加上毛玻璃底色
+   ============================================================ */
+.zoomable-img {
+    cursor: zoom-in;
+}
+
+.cloned-zoom-img {
+    backface-visibility: hidden;
+    will-change: transform, box-shadow;
+
+    /* 👉 核心魔法：直接在这里给透明图片糊上一层半透明白色的毛玻璃 */
+    background: rgba(255, 255, 255, 0.4) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+}
