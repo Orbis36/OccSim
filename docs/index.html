@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OccSim: Multi-kilometer Simulation</title>
+    <link rel="icon" type="image/png" href="figures/logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="nav-logo" class="nav-logo">OccSim</div>
+    <nav class="glass-nav">
+        <div class="nav-slider" id="nav-slider"></div>
+        <a href="#main-demo" class="nav-link active" data-index="0">Main Demo</a>
+        <a href="#rollout" class="nav-link" data-index="1">Rollout with W-DiT</a>
+        <a href="#diversity" class="nav-link" data-index="2">Diversity & Collected data</a>
+        <a href="#Acknowledgement" class="nav-link" data-index="3">Acknowledgment</a>
+    </nav>
+
+    <div class="scroll-container">
+        <section id="main-demo" class="page-section">
+            <div class="hero-content">
+                <h1 class="title">OccSim: Multi-kilometer driving simulation <br> with long-horizon occupancy world models</h1>
+                <p class="authors"><strong>Anonymous authors</strong></p>
+                <p class="affiliation">Paper under double-blind review</p>
+            </div>
+
+            <div class="showcase-container">
+                <div class="video-wrapper">
+                    <video
+                        id="hero-video"
+                        title="OccSim Main Demo"
+                        autoplay
+                        muted
+                        loop
+                        playsinline
+                        preload="auto">
+                        <source src="videos/OccSimFinalDemo.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay"></div>
+                    <div class="custom-controls">
+                        <button id="play-pause-btn" class="control-btn">
+                            <svg id="pause-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                            <svg id="play-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path d="M8 5v14l11-7z"/></svg>
+                        </button>
+                        <div class="progress-container" id="progress-container">
+                            <div class="progress-bar" id="progress-bar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-cards" id="feature-cards">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>World Model Driven Simulator</h3>
+                            <p>As far as we know, OccSim is the first occupancy world model driven simulation via autoregressive rollouts.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>HD-Map free Generation</h3>
+                            <p>By eliminating the reliance on labeled HD maps during simulation, OccSim enables scalable AD simulation.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>SoTA Generation Length & Quality</h3>
+                            <p>W-DiT enables at least 80x longer static semantic occupancy generation with SoTA fidelity and diversity.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>Towards next Generation Sim.</h3>
+                            <p>Data collected from OccSim enable 22.1% improvement on 0-shot dynamic prior learning over asset-based Sim.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="rollout" class="page-section fit-viewport">
+            <div class="hero-content">
+                <h1 class="title">Over 3000 frames static semantic occupancy <br> rollouts with W-DiT for diverse road map construction</h1>
+
+                <p class="section-subtitle">
+                    Tested on trajectory of varying difficulty (Straight, Zigzag, Closed-loop), <br>
+                    W-DiT structure presents the best stability and performance compare with previous design.
+                </p>
+
+                <div class="performance-container">
+                    <div class="perf-block">
+                        <h3 class="perf-title">Stable Rollout Length (Higher is better)</h3>
+                        <div class="apple-perf-item">
+                            <div class="apple-bar-row">
+                                <div class="apple-bar-track">
+                                    <div class="apple-bar gradient-bar" data-width="100%"></div>
+                                </div>
+                                <div class="apple-value highlight">3000</div>
+                            </div>
+                            <div class="apple-label">OccSim (Ours)</div>
+                        </div>
+                        <div class="apple-perf-item">
+                            <div class="apple-bar-row">
+                                <div class="apple-bar-track">
+                                    <div class="apple-bar gray-bar" data-width="2%"></div>
+                                </div>
+                                <div class="apple-value text-muted">&lt;40</div>
+                            </div>
+                            <div class="apple-label">Previous SoTA</div>
+                        </div>
+                    </div>
+
+                    <div class="perf-block">
+                        <h3 class="perf-title">Worst FID Score at 1000th frame under different trajectory (Lower is better)</h3>
+                        <div class="apple-perf-item">
+                            <div class="apple-bar-row">
+                                <div class="apple-bar-track">
+                                    <div class="apple-bar gradient-bar" data-width="28%"></div>
+                                </div>
+                                <div class="apple-value highlight">62.5</div>
+                            </div>
+                            <div class="apple-label">OccSim (Ours)</div>
+                        </div>
+                        <div class="apple-perf-item">
+                            <div class="apple-bar-row">
+                                <div class="apple-bar-track">
+                                    <div class="apple-bar gray-bar" data-width="85%"></div>
+                                </div>
+                                <div class="apple-value text-muted">183.6</div>
+                            </div>
+                            <div class="apple-label">Previous SoTA</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="intro-container">
+                    <div class="intro-text">
+                        <p class="section-subtitle video-subtitle" style="margin: 0;">
+                            Conditioned on the initial frame from various scenes in the Occ3D-nuScenes semantic occupancy dataset, we evaluate W-DiT's rollout capabilities across diverse driving trajectories (as illustrated in the animation on the right).
+                            Feel free to explore the three distinct scenarios visualized below. Notably, our model maintains robust generation stability even across long-horizon rollouts spanning thousands of frames.
+                        </p>
+                    </div>
+                    <div class="intro-visual">
+                        <div class="traj-gallery">
+                            <svg style="width:0; height:0; position:absolute;" aria-hidden="true" focusable="false">
+                                <defs>
+                                    <linearGradient id="trajGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#5265ff" />
+                                        <stop offset="100%" stop-color="#f5a1ff" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+
+                            <div class="traj-item">
+                                <svg viewBox="0 0 100 100" class="traj-svg">
+                                    <line x1="20" y1="50" x2="40" y2="50" stroke="#5265ff" stroke-width="4" stroke-linecap="round"/>
+                                    <line x1="40" y1="50" x2="80" y2="50.1" stroke="url(#trajGrad)" stroke-width="4" stroke-linecap="round" stroke-dasharray="6,6"/>
+                                    <circle cx="20" cy="50" r="5" fill="#111" stroke="#fff" stroke-width="2"/>
+                                </svg>
+                                <span class="traj-label">Straight</span>
+                            </div>
+
+                            <div class="traj-item">
+                                <svg viewBox="0 0 100 100" class="traj-svg">
+                                    <polyline points="20,80 35,50" stroke="#5265ff" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <polyline points="35,50 65,80 80,20" stroke="url(#trajGrad)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6,6"/>
+                                    <circle cx="20" cy="80" r="5" fill="#111" stroke="#fff" stroke-width="2"/>
+                                </svg>
+                                <span class="traj-label">Zigzag</span>
+                            </div>
+
+                            <div class="traj-item">
+                                <svg viewBox="0 0 100 100" class="traj-svg">
+                                    <path d="M 50 85 C 25 85, 15 65, 15 45" stroke="#5265ff" stroke-width="4" fill="none" stroke-linecap="round"/>
+                                    <path d="M 15 45 C 15 15, 85 15, 85 45 C 85 65, 75 85, 50 85" stroke="url(#trajGrad)" stroke-width="4" fill="none" stroke-linecap="round" stroke-dasharray="6,6"/>
+                                    <circle cx="50" cy="85" r="5" fill="#111" stroke="#fff" stroke-width="2"/>
+                                </svg>
+                                <span class="traj-label">Closed-loop</span>
+                            </div>
+                        </div>
+
+                        <div class="traj-legend">
+                            <div class="legend-item"><span class="legend-dot start-dot"></span>Start</div>
+                            <div class="legend-item"><span class="legend-line gt-line"></span>GT (1-40)</div>
+                            <div class="legend-item"><span class="legend-line ext-line"></span>Extended</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-gallery-container">
+                    <div class="video-thumbnail-card" data-target="modal-039">
+                        <div class="thumbnail-bg" style="background-image: url('figures/scene39-frame0.png');"></div>
+                        <div class="play-button-overlay">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <div class="thumbnail-label">Scene-039</div>
+                    </div>
+                    <div class="video-thumbnail-card" data-target="modal-221">
+                        <div class="thumbnail-bg" style="background-image: url('figures/scene221-frame0.png');"></div>
+                        <div class="play-button-overlay">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <div class="thumbnail-label">Scene-221</div>
+                    </div>
+                    <div class="video-thumbnail-card" data-target="modal-632">
+                        <div class="thumbnail-bg" style="background-image: url('figures/scene632-frame0.png');"></div>
+                        <div class="play-button-overlay">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <div class="thumbnail-label">Scene-632</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="diversity" class="page-section fit-viewport">
+            <div class="hero-content">
+            <h1 class="title">Towards the next generation of Occupancy WM-centric simulation: <br> SoTA generation diversity & downstream pretrain</h1>
+
+            <p class="section-subtitle">
+                Given the same initial frame and the same straight trajectory, our model present SoTA generation diversity compared with previous occupancy world model. After 50s (100 frames, we use 6m/s speed to generate trajectory) <br>
+                 rollout, the branch road topology, vegetation / man-made presents obvious difference (random seed 999 / 2026 / 3407). <b style="font-weight: 600; color: #000;">Hover over the images to enlarge for better details.</b>
+            </p>
+
+            <div class="diversity-container">
+                <div class="scene-group" id="group-039">
+                    <div class="group-header">
+                        <h2>Scene-0039</h2>
+                        <p>Initial Frame & Multi-seed Rollouts</p>
+                    </div>
+                    <div class="visual-layout">
+                        <div class="initial-box">
+                            <img src="figures/diversity/scene039_init.png" alt="Initial Frame" class="zoomable-img">
+                            <span>Initial Frame</span>
+                            <div class="flow-origin"></div>
+                        </div>
+
+                    <svg class="flow-svg" viewBox="0 0 40 280">
+                        <defs>
+                            <linearGradient id="flowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#5265ff" />
+                                <stop offset="100%" stop-color="#f5a1ff" />
+                            </linearGradient>
+                        </defs>
+                        <path class="flow-path" pathLength="100" d="M 0,140 C 12,140 20,132 20,115 L 20,45 C 20,28 28,20 40,20" />
+                        <path class="flow-path" pathLength="100" d="M 0,140 L 40,140.01" />
+                        <path class="flow-path" pathLength="100" d="M 0,140 C 12,140 20,148 20,165 L 20,235 C 20,252 28,260 40,260" />
+                    </svg>
+
+                        <div class="prediction-grid">
+                            <div class="time-labels"><span>5s</span><span>10s</span><span>25s</span><span>50s</span></div>
+                            <div class="seed-row" data-seed="999">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene039_999_5s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene039_999_10s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene039_999_25s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene039_999_50s.png">
+                                <div class="seed-label">Seed 999</div>
+                            </div>
+                            <div class="seed-row" data-seed="2026">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene039_2026_5s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene039_2026_10s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene039_2026_25s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene039_2026_50s.png">
+                                <div class="seed-label">Seed 2026</div>
+                            </div>
+                            <div class="seed-row" data-seed="3047">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene039_3407_5s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene039_3407_10s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene039_3407_25s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene039_3407_50s.png">
+                                <div class="seed-label">Seed 3407</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scene-group" id="group-105">
+                    <div class="group-header">
+                        <h2>Scene-0105</h2>
+                        <p>Initial Frame & Multi-seed Rollouts</p>
+                    </div>
+                    <div class="visual-layout">
+                        <div class="initial-box">
+                            <img src="figures/diversity/scene105_init.png" alt="Initial Frame" class="zoomable-img">
+                            <span>Initial Frame</span>
+                            <div class="flow-origin"></div>
+                        </div>
+                        <svg class="flow-svg" viewBox="0 0 40 280">
+                            <path class="flow-path" pathLength="100" d="M 0,140 C 12,140 20,132 20,115 L 20,45 C 20,28 28,20 40,20" />
+                            <path class="flow-path" pathLength="100" d="M 0,140 L 40,140.01" />
+                            <path class="flow-path" pathLength="100" d="M 0,140 C 12,140 20,148 20,165 L 20,235 C 20,252 28,260 40,260" />
+                        </svg>
+                        <div class="prediction-grid">
+                            <div class="time-labels"><span>5s</span><span>10s</span><span>25s</span><span>50s</span></div>
+                            <div class="seed-row" data-seed="999">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene105_999_5s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene105_999_10s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene105_999_25s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene105_999_50s.png">
+                                <div class="seed-label">Seed 999</div>
+                            </div>
+                            <div class="seed-row" data-seed="2026">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene105_2026_5s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene105_2026_10s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene105_2026_25s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene105_2026_50s.png">
+                                <div class="seed-label">Seed 2026</div>
+                            </div>
+                            <div class="seed-row" data-seed="3047">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene105_3407_5s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene105_3407_10s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene105_3407_25s.png">
+                                <img class="pred-img zoomable-img" src="figures/diversity/scene105_3407_50s.png">
+                                <div class="seed-label">Seed 3047</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="intro-container" style="margin-top: 2.5vh; margin-bottom: 1vh;">
+                <div class="intro-text">
+                    <p class="section-subtitle video-subtitle" style="margin: 0; font-size: 1.05rem; line-height: 1.4;">
+                        HD-map-free generation enables the scaling of driving scenario and construct complex road networks. By integrating real-world agent assets and control algorithms onto this foundation,
+                        we facilitate effective pre-training for occupancy forecasting models. Models trained on data synthesized by OccSim (pre-trained on Waymo Occ) significantly outperform those trained on equivalent Carla datasets in 0-shot tests on UniScenes.
+                        <b style="font-weight: 600; color: #000;">Even in the worst-case scenario (OccWorld), data collected from OccSim provides an 11% performance boost over Carla data, which further scales to 22.1% with 5x data expansion.</b>
+                    </p>
+                </div>
+            </div>
+
+            <div class="performance-container" style="margin-top: 2vh;">
+                <div class="perf-block">
+                    <h3 class="perf-title">OccWorld 3s average IoU (Deterministic Model)</h3>
+                    <div class="apple-perf-item">
+                        <div class="apple-bar-row">
+                            <div class="apple-bar-track">
+                                <div class="apple-bar gradient-bar" data-width="100%"></div>
+                            </div>
+                            <div class="apple-value highlight">18.08</div>
+                        </div>
+                        <div class="apple-label">OccSim (Ours 5x)</div>
+                    </div>
+                    <div class="apple-perf-item">
+                        <div class="apple-bar-row">
+                            <div class="apple-bar-track">
+                                <div class="apple-bar gradient-bar" data-width="91%"></div>
+                            </div>
+                            <div class="apple-value highlight">16.41</div>
+                        </div>
+                        <div class="apple-label">OccSim (Ours)</div>
+                    </div>
+                    <div class="apple-perf-item">
+                        <div class="apple-bar-row">
+                            <div class="apple-bar-track">
+                                <div class="apple-bar gray-bar" data-width="82%"></div>
+                            </div>
+                            <div class="apple-value text-muted">14.81</div>
+                        </div>
+                        <div class="apple-label">Pre-train on Carla</div>
+                    </div>
+                </div>
+
+                <div class="perf-block">
+                    <h3 class="perf-title">OccFM 3s average IoU (Stochastic Model)</h3>
+                    <div class="apple-perf-item">
+                        <div class="apple-bar-row">
+                            <div class="apple-bar-track">
+                                <div class="apple-bar gradient-bar" data-width="100%"></div>
+                            </div>
+                            <div class="apple-value highlight">21.40</div>
+                        </div>
+                        <div class="apple-label">OccSim (Ours 5x)</div>
+                    </div>
+                    <div class="apple-perf-item">
+                        <div class="apple-bar-row">
+                            <div class="apple-bar-track">
+                                <div class="apple-bar gradient-bar" data-width="69%"></div>
+                            </div>
+                            <div class="apple-value highlight">14.72</div>
+                        </div>
+                        <div class="apple-label">OccSim (Ours)</div>
+                    </div>
+                    <div class="apple-perf-item">
+                        <div class="apple-bar-row">
+                            <div class="apple-bar-track">
+                                <div class="apple-bar gray-bar" data-width="32%"></div>
+                            </div>
+                            <div class="apple-value text-muted">6.94</div>
+                        </div>
+                        <div class="apple-label">Pre-train on Carla</div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+        </section>
+
+        <section id="Acknowledgement" class="page-section">
+            <div class="ack-content">
+                <div id="rain-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;"></div>
+
+                <h1 class="title">Acknowledgement</h1>
+                <p class="ack-intro">This research was enabled in part by the following programs; we appreciate the resources provided:</p>
+
+                <ul class="ack-list">
+                    <li>
+                        <strong>NVIDIA Applied Research Program:</strong> We gratefully acknowledge the generous computes support, which significantly accelerated our model training.
+                    </li>
+                    <li>
+                        <strong>Digital Research Alliance of Canada:</strong> For providing the computational infrastructure and Nibi, Trillium and Narval cluster.
+                    </li>
+                    <li>
+                        <strong>Google TPU Research Cloud:</strong> For additional TPU resources grants at Google GCP.
+                    </li>
+                </ul>
+
+            </div>
+        </section>
+    </div>
+
+    <button id="prev-page-btn" class="glass-floating-btn up-btn" aria-label="Previous Page" style="opacity: 0; pointer-events: none; transform: translateY(-50%) scale(0.8);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+    <button id="next-page-btn" class="glass-floating-btn down-btn" aria-label="Next Page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+    </button>
+
+    <div id="modal-039" class="video-modal-overlay">
+        <div class="video-modal-content">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title">Scene-039 Trajectory Rollouts</h2>
+                    <p class="modal-subtitle">Compare model performance across Straight, Zigzag, and Closed-loop trajectories.</p>
+                </div>
+                <button class="modal-close-btn" aria-label="Close">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-video-grid">
+                <div class="modal-video-item">
+                    <h3 class="modal-video-label">Straight Trajectory</h3>
+                    <div class="modal-iframe-wrapper">
+                        <video class="modal-video" playsinline preload="metadata" title="Scene 039 Straight">
+                            <source src="videos/rollout/scene039_straight.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay modal-interactive-overlay"></div>
+                        <div class="custom-controls local-controls visible">
+                            <button class="control-btn local-play-btn">
+                                <svg class="local-pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                <svg class="local-play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                            <div class="progress-container local-progress-container">
+                                <div class="progress-bar local-progress-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-video-item">
+                    <h3 class="modal-video-label">Zigzag Trajectory</h3>
+                    <div class="modal-iframe-wrapper">
+                        <video class="modal-video" playsinline preload="metadata" title="Scene 039 Zigzag">
+                            <source src="videos/rollout/scene039_zigzag.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay modal-interactive-overlay"></div>
+                        <div class="custom-controls local-controls visible">
+                            <button class="control-btn local-play-btn">
+                                <svg class="local-pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                <svg class="local-play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                            <div class="progress-container local-progress-container">
+                                <div class="progress-bar local-progress-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-video-item">
+                    <h3 class="modal-video-label">Closed-loop Trajectory</h3>
+                    <div class="modal-iframe-wrapper">
+                        <video class="modal-video" playsinline preload="metadata" title="Scene 039 Loop">
+                            <source src="videos/rollout/scene039_loop.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay modal-interactive-overlay"></div>
+                        <div class="custom-controls local-controls visible">
+                            <button class="control-btn local-play-btn">
+                                <svg class="local-pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                <svg class="local-play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                            <div class="progress-container local-progress-container">
+                                <div class="progress-bar local-progress-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-221" class="video-modal-overlay">
+        <div class="video-modal-content">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title">Scene-221 Trajectory Rollouts</h2>
+                    <p class="modal-subtitle">Compare model performance across Straight, Zigzag, and Closed-loop trajectories.</p>
+                </div>
+                <button class="modal-close-btn" aria-label="Close">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-video-grid">
+                <div class="modal-video-item">
+                    <h3 class="modal-video-label">Straight Trajectory</h3>
+                    <div class="modal-iframe-wrapper">
+                        <video class="modal-video" playsinline preload="metadata" title="Scene 221 Straight">
+                            <source src="videos/rollout/scene221_straight.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay modal-interactive-overlay"></div>
+                        <div class="custom-controls local-controls visible">
+                            <button class="control-btn local-play-btn">
+                                <svg class="local-pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                <svg class="local-play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                            <div class="progress-container local-progress-container">
+                                <div class="progress-bar local-progress-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-video-item">
+                    <h3 class="modal-video-label">Zigzag Trajectory</h3>
+                    <div class="modal-iframe-wrapper">
+                        <video class="modal-video" playsinline preload="metadata" title="Scene 221 Zigzag">
+                            <source src="videos/rollout/scene221_zigzag.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay modal-interactive-overlay"></div>
+                        <div class="custom-controls local-controls visible">
+                            <button class="control-btn local-play-btn">
+                                <svg class="local-pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                <svg class="local-play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                            <div class="progress-container local-progress-container">
+                                <div class="progress-bar local-progress-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-video-item">
+                    <h3 class="modal-video-label">Closed-loop Trajectory</h3>
+                    <div class="modal-iframe-wrapper">
+                        <video class="modal-video" playsinline preload="metadata" title="Scene 221 Loop">
+                            <source src="videos/rollout/scene221_loop.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay modal-interactive-overlay"></div>
+                        <div class="custom-controls local-controls visible">
+                            <button class="control-btn local-play-btn">
+                                <svg class="local-pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                <svg class="local-play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                            <div class="progress-container local-progress-container">
+                                <div class="progress-bar local-progress-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-632" class="video-modal-overlay">
+        <div class="video-modal-content">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title">Scene-632 Trajectory Rollouts</h2>
+                    <p class="modal-subtitle">Compare model performance across Straight, Zigzag, and Closed-loop trajectories.</p>
+                </div>
+                <button class="modal-close-btn" aria-label="Close">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-video-grid">
+                <div class="modal-video-item">
+                    <h3 class="modal-video-label">Straight Trajectory</h3>
+                    <div class="modal-iframe-wrapper">
+                        <video class="modal-video" playsinline preload="metadata" title="Scene 632 Straight">
+                            <source src="videos/rollout/scene632_straight.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay modal-interactive-overlay"></div>
+                        <div class="custom-controls local-controls visible">
+                            <button class="control-btn local-play-btn">
+                                <svg class="local-pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                <svg class="local-play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                            <div class="progress-container local-progress-container">
+                                <div class="progress-bar local-progress-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-video-item">
+                    <h3 class="modal-video-label">Zigzag Trajectory</h3>
+                    <div class="modal-iframe-wrapper">
+                        <video class="modal-video" playsinline preload="metadata" title="Scene 632 Zigzag">
+                            <source src="videos/rollout/scene632_zigzag.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay modal-interactive-overlay"></div>
+                        <div class="custom-controls local-controls visible">
+                            <button class="control-btn local-play-btn">
+                                <svg class="local-pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                <svg class="local-play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                            <div class="progress-container local-progress-container">
+                                <div class="progress-bar local-progress-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-video-item">
+                    <h3 class="modal-video-label">Closed-loop Trajectory</h3>
+                    <div class="modal-iframe-wrapper">
+                        <video class="modal-video" playsinline preload="metadata" title="Scene 632 Loop">
+                            <source src="videos/rollout/scene632_loop.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay modal-interactive-overlay"></div>
+                        <div class="custom-controls local-controls visible">
+                            <button class="control-btn local-play-btn">
+                                <svg class="local-pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                <svg class="local-play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                            <div class="progress-container local-progress-container">
+                                <div class="progress-bar local-progress-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

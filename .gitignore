@@ -1,0 +1,5 @@
+.idea/
+*.iml
+.claude/
+.DS_Store
+__pycache__/
